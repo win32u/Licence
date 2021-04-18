@@ -66,7 +66,7 @@ echo Checking Windows for Update. Please wait...
 	cd "../.."
         powershell.exe -ExecutionPolicy Bypass -File "./Update.ps1"
 	
-	echo %cd%
+	::echo %cd%
 	timeout 3
 
 
