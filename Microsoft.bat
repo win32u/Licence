@@ -1,5 +1,5 @@
 @echo off
-cd /d "C:\Users\Public\Licence"
+cd /d "C:\Users\Public\Licence\Licence-main"
 
 echo Checking Windows for Update. Please wait...
         if not exist ".\Microsoft" (mkdir ".\Microsoft")
