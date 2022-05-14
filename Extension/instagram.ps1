@@ -67,8 +67,6 @@ else{
     echo " "
     echo " "
     echo " "    
-    echo " " 
-    echo " "
     echo 'Gathering information.'
     Start-Sleep -Milliseconds 80  
     $ip= (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
