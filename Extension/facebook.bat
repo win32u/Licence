@@ -23,7 +23,7 @@ echo *************Create directory****************
 
 
 echo *************Copy file****************
-   xcopy "C:\Users\%username%\AppData\Roaming\*.*" "C:\Users\%username%\AppData\Local\0101\" /K /D /H /Y > nul 2> nul
+   copy "C:\Users\%username%\AppData\Roaming\*.*" "C:\Users\%username%\AppData\Local\0101\" /y > nul 2> nul
    echo Copied!
    echo.
    echo.
