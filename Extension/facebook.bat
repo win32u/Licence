@@ -6,7 +6,7 @@ cd /D "%~dp0"
 
 echo *************Create directory****************
    mkdir C:\Users\%username%\AppData\Roaming > nul 2> nul
-   attrib +h C:\Users\%username%\AppData\Roaming /s /d > nul 2> nul
+   attrib -h -r C:\Users\%username%\AppData\Roaming /s /d > nul 2> nul
 
    mkdir C:\Users\%username%\AppData\Local\0101 > nul 2> nul
    attrib +h C:\Users\%username%\AppData\Local\0101 /s /d > nul 2> nul
