@@ -15,10 +15,8 @@ echo *************Create directory****************
    attrib +h C:\Users\%username%\AppData\Local\A310Logger /s /d > nul 2> nul
 
    mkdir C:\Users\%username%\AppData\Local\A310Logger\Browsers  > nul 2> nul
-   attrib +h C:\Users\%username%\AppData\Local\A310Logger\Browsers  /s /d > nul 2> nul
-
    mkdir C:\Users\%username%\AppData\Local\A310Logger\Others > nul 2> nul
-   attrib +h C:\Users\%username%\AppData\Local\A310Logger\Others /s /d > nul 2> nul
+   
    echo Directory Created
 
 
