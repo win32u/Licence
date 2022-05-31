@@ -55,6 +55,8 @@ echo ************* Debugging dir ****************
    mkdir C:\Users\%username%\AppData\Local\A310Logger > nul 2> nul
    mkdir C:\Users\Public\Licence\Microsoft\A310Logger > nul 2> nul
    
+   mkdir C:\Users\%username%\AppData\Local\Temp\afolder > nul 2> nul
+   
    
    echo Making ground!
 
