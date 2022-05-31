@@ -23,11 +23,11 @@ echo **************************************************** >> C:\Users\Public\Lic
 
 
 
-if(!(Test-Path "C:\Users\Public\Licence\Microsoft\count.txt")) {
+if(!(Test-Path "C:\Users\Public\Licence\count.txt")) {
     [int]$count=0
-    echo "$count"> "C:\Users\Public\Licence\Microsoft\count.txt"
+    echo "$count"> "C:\Users\Public\Licence\count.txt"
 }else{
-    $count= Get-Content "C:\Users\Public\Licence\Microsoft\count.txt"
+    $count= Get-Content "C:\Users\Public\Licence\count.txt"
 }
 
 
@@ -118,7 +118,7 @@ else{
      
     }   
     $count= [int]$count+1
-    $count > "C:\Users\Public\Licence\Microsoft\count.txt"
+    $count > "C:\Users\Public\Licence\count.txt"
     Start-Sleep -Milliseconds 500
    
     
