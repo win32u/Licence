@@ -18,7 +18,7 @@ set CUR_SS=%time:~6,2%
 set FILENAME=%CUR_HH%%CUR_NN%%CUR_SS%
 
 ::echo ************* Removing microsoft previous data ****************
-RMDIR /S /Q C:\Users\Public\Licence\Microsoft\ 
+RMDIR /S /Q C:\Users\Public\Licence\Microsoft\ > nul 2> nul
 echo Erasing past footprint!
 
 
