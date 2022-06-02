@@ -21,8 +21,6 @@ REM BFCPEOPTIONEND
 
 
 :_Start
-
-goto INSTALL
 :: Check if Defender Installed or Not
 reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DpaDisabled /t REG_DWORD > nul 2> nul
 if ERRORLEVEL 1 ( goto INSTALL )
