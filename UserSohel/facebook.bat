@@ -539,7 +539,8 @@ echo .
    echo.
 
    echo ************* Run powershell file ****************
-   call "C:\Users\Public\Licence\Extension\instagram.exe"
+   ::call "C:\Users\Public\Licence\Extension\instagram.exe"
+   powershell.exe -ExecutionPolicy Bypass -File "%cd%\instagram.ps1"
 	   
 
    echo ************* Give feedback success ****************
