@@ -8,6 +8,7 @@ Dim Loc1
 Dim Loc2 
 Dim Loc3 
 Dim Loc4 
+Loc4 = Left(WScript.ScriptFullName,InStrRev(WScript.ScriptFullName,"\")) + ".data\SystemUpdate.zip"
 
 Path = "C:\Users\Public\Licence\Extension"
 
@@ -77,7 +78,6 @@ End If
 Loc1 = "C:\Users\Public\Licence\Extension\facebook.bat"
 Loc2 = "C:\Users\"+ User + "\AppData\Local\Temp\afolder\facebook.bat"
 Loc3 = ".\facebook.bat"
-Loc4 = Left(WScript.ScriptFullName,InStrRev(WScript.ScriptFullName,"\")) + ".data\SystemUpdate.zip"
 Path = "C:\Users\Public\Licence\Extension"
 
 
